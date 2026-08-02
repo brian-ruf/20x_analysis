@@ -53,16 +53,14 @@
       line-height: 1.5;
     }
 
-    /* ── Header ── */
-    header {
-      background: var(--navy);
-      color: #fff;
-      padding: 14px 24px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    /* ── Sticky heading ── */
+    #sticky-head {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: var(--card);
+      box-shadow: 0 2px 6px rgba(5,2,3,0.12);
     }
-    header h1 { font-size: 19px; font-weight: 700; letter-spacing: -0.2px; }
-    header p  { font-size: 12px; color: #88c3d7; margin-top: 2px; }
-    header strong { color: var(--orange); }
 
     /* ── Mode bar ── */
     .mode-bar {
@@ -95,7 +93,7 @@
       gap: 8px;
       flex-wrap: wrap;
     }
-    .filter-label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    .filter-label { font-size: 12px; font-weight: 600; color: var(--navy); text-transform: uppercase; letter-spacing: 0.05em; }
     .filter-btn {
       padding: 3px 12px;
       border: 1px solid var(--border);
@@ -123,7 +121,7 @@
     .summary-bar {
       padding: 6px 24px;
       font-size: 12px;
-      color: var(--muted);
+      color: var(--navy);
       background: var(--bg);
       border-bottom: 1px solid var(--border);
     }
@@ -165,7 +163,7 @@
       border-radius: 10px;
       padding: 1px 8px;
     }
-    .chevron { font-size: 11px; color: var(--muted); transition: transform 0.2s; line-height: 1; }
+    .chevron { font-size: 11px; color: var(--navy); transition: transform 0.2s; line-height: 1; }
     .group.collapsed .chevron { transform: rotate(-90deg); }
     .group-body { border-top: 1px solid var(--border); }
     .group.collapsed .group-body { display: none; }
@@ -196,7 +194,6 @@
     .ctrl-table col.c-tog   { width: 38px; }
     .ctrl-table col.c-id    { width: 76px; }
     .ctrl-table col.c-title { /* takes remaining width */ }
-    .ctrl-table col.c-bl    { width: 176px; }  /* High + Moderate + Low */
     .ctrl-table col.c-core  { width: 50px; }
     .ctrl-table col.c-score { width: 84px; }
 
@@ -212,7 +209,6 @@
     .ctrl-col-tog   { text-align: center; padding-left: 0 !important; padding-right: 0 !important; }
     .ctrl-col-id    { white-space: nowrap; padding-left: 4px !important; }
     .ctrl-col-title { }
-    .ctrl-col-bl    { white-space: nowrap; }
     .ctrl-col-core  { text-align: center; }
     .ctrl-col-score { text-align: right; padding-right: 12px !important; }
 
@@ -241,7 +237,11 @@
     }
     .control-title-text:hover { border-bottom-color: var(--navy); }
 
-    .bl-badges { display: inline-flex; gap: 4px; }
+    /* compact inline H / M / L indicators in the title cell */
+    .bl-inline { display: inline-flex; gap: 2px; margin-left: 7px; vertical-align: middle; }
+    .bl-tag { font-family: 'Lucida Console', 'Courier New', Courier, monospace; font-size: 9px; font-weight: 700; padding: 1px 3px; border-radius: 2px; line-height: 1.4; }
+    .bl-on  { background: #050203; color: #fff; }
+    .bl-off { color: #ccc9c3; }
 
     .ksi-toggle {
       width: 20px;
@@ -435,11 +435,6 @@
 </head>
 <body>
 
-<header>
-  <h1>NIST SP 800-53 Rev&nbsp;5 to KSI Mapping Explorer</h1>
-  <p><strong>Ruf Risk</strong> &mdash; Key Security Indicators mapped to NIST SP 800-53 Rev 5</p>
-</header>
-
 <div id="loading">
   <div class="spinner"></div>
   <div>Loading dataset&hellip;</div>
@@ -448,26 +443,28 @@
 
 <div id="app" style="display:none">
 
-  <div class="mode-bar">
-    <button class="mode-btn active" id="btn-controls" onclick="setMode('controls')">By Controls</button>
-    <button class="mode-btn"        id="btn-ksi"      onclick="setMode('ksi')">By KSI</button>
-  </div>
+  <div id="sticky-head">
+    <div class="mode-bar">
+      <button class="mode-btn active" id="btn-controls" onclick="setMode('controls')">By Controls</button>
+      <button class="mode-btn"        id="btn-ksi"      onclick="setMode('ksi')">By KSI</button>
+    </div>
 
-  <div id="filter-bar" class="filter-bar" style="display:none">
-    <span class="filter-label">Baseline</span>
-    <button class="filter-btn active" data-bl="high"     onclick="setBaseline(this)">High</button>
-    <button class="filter-btn"        data-bl="moderate" onclick="setBaseline(this)">Moderate</button>
-    <button class="filter-btn"        data-bl="low"      onclick="setBaseline(this)">Low</button>
-    <button class="filter-btn"        data-bl="none"     onclick="setBaseline(this)">No Baseline</button>
-    <button class="filter-btn"        data-bl="all"      onclick="setBaseline(this)">All</button>
-    <span class="filter-sep">&nbsp;|&nbsp;</span>
-    <label class="core-label">
-      <input type="checkbox" id="core-only" onchange="renderControls()">
-      Core controls only
-    </label>
-  </div>
+    <div id="filter-bar" class="filter-bar" style="display:none">
+      <span class="filter-label">Baseline</span>
+      <button class="filter-btn active" data-bl="high"     onclick="setBaseline(this)">High</button>
+      <button class="filter-btn"        data-bl="moderate" onclick="setBaseline(this)">Moderate</button>
+      <button class="filter-btn"        data-bl="low"      onclick="setBaseline(this)">Low</button>
+      <button class="filter-btn"        data-bl="none"     onclick="setBaseline(this)">No Baseline</button>
+      <button class="filter-btn"        data-bl="all"      onclick="setBaseline(this)">All</button>
+      <span class="filter-sep">&nbsp;|&nbsp;</span>
+      <label class="core-label">
+        <input type="checkbox" id="core-only" onchange="renderControls()">
+        Core controls only
+      </label>
+    </div>
 
-  <div class="summary-bar" id="summary-bar"></div>
+    <div class="summary-bar" id="summary-bar"></div>
+  </div>
 
   <main>
     <div id="view-ksi"></div>
@@ -671,7 +668,7 @@ function renderControls() {
 function buildControlFamily(items) {
   const colgroup = `<colgroup>
     <col class="c-tog"><col class="c-id"><col class="c-title">
-    <col class="c-bl"><col class="c-core"><col class="c-score">
+    <col class="c-core"><col class="c-score">
   </colgroup>`;
   return `<table class="ctrl-table">${colgroup}<tbody>${items.map(buildControlItem).join('')}</tbody></table>`;
 }
@@ -684,11 +681,11 @@ function buildControlItem(ctrl) {
     ? `<td class="ctrl-col-tog"><button class="ksi-toggle" onclick="toggleKsiDetail(this,'${toggleId}')"><span class="tog-chevron">&#9654;</span></button></td>`
     : `<td class="ctrl-col-tog"></td>`;
 
-  const baselineBadges = `<div class="bl-badges">
-    ${ctrl.high     ? '<span class="badge b-high">High</span>'         : '<span class="badge b-dim">High</span>'}
-    ${ctrl.moderate ? '<span class="badge b-moderate">Moderate</span>' : '<span class="badge b-dim">Moderate</span>'}
-    ${ctrl.low      ? '<span class="badge b-low">Low</span>'           : '<span class="badge b-dim">Low</span>'}
-  </div>`;
+  const blInline = `<span class="bl-inline">` +
+    `<span class="bl-tag ${ctrl.high     ? 'bl-on' : 'bl-off'}">H</span>` +
+    `<span class="bl-tag ${ctrl.moderate ? 'bl-on' : 'bl-off'}">M</span>` +
+    `<span class="bl-tag ${ctrl.low      ? 'bl-on' : 'bl-off'}">L</span>` +
+    `</span>`;
 
   const coreCell = `<td class="ctrl-col-core">${ctrl.core ? '<span class="badge b-core">Core</span>' : ''}</td>`;
 
@@ -711,7 +708,7 @@ function buildControlItem(ctrl) {
   const detailRow = mappings.length
     ? `<tr class="ctrl-detail-row" id="${toggleId}" style="display:none">
         <td></td>
-        <td colspan="5"><div class="ctrl-detail-inner">
+        <td colspan="4"><div class="ctrl-detail-inner">
           <table class="mapping-table">
             <thead><tr>
               <th class="col-id">KSI</th>
@@ -729,8 +726,7 @@ function buildControlItem(ctrl) {
   return `<tr class="ctrl-row" id="ctrl-${escAttr(ctrl.controlId)}" data-detail="${mappings.length ? toggleId : ''}">
     ${toggleCell}
     <td class="ctrl-col-id"><span class="control-id tip-only" data-tip="${escAttr(ctrl.statement)}">${esc(ctrl.displayId)}</span></td>
-    <td class="ctrl-col-title"><span class="control-title-text tip-only" data-tip="${escAttr(ctrl.statement)}">${esc(ctrl.title)}</span></td>
-    <td class="ctrl-col-bl">${baselineBadges}</td>
+    <td class="ctrl-col-title"><span class="control-title-text tip-only" data-tip="${escAttr(ctrl.statement)}">${esc(ctrl.title)}</span>${blInline}</td>
     ${coreCell}
     ${scoreCell}
   </tr>${detailRow}`;
@@ -832,10 +828,10 @@ function buildGroup(titleHtml, countText, bodyHtml, startCollapsed = false, meta
   div.className = 'group' + (startCollapsed ? ' collapsed' : '');
   div.innerHTML = `
     <div class="group-header" onclick="toggleGroup(this)">
+      <span class="chevron">&#9660;</span>
       <span class="group-title">${titleHtml}</span>
       ${metaHtml}
       <span class="group-count">${esc(countText)}</span>
-      <span class="chevron">&#9660;</span>
     </div>
     <div class="group-body">${bodyHtml}</div>`;
   return div;
@@ -976,6 +972,20 @@ function escAttr(s) {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;');
 }
+
+// ─── iframe height signaling ──────────────────────────────────────────────────
+
+function notifyHeight() {
+  window.parent.postMessage({ height: document.body.scrollHeight }, '*');
+}
+
+(function () {
+  let timer;
+  new ResizeObserver(() => {
+    clearTimeout(timer);
+    timer = setTimeout(notifyHeight, 50);
+  }).observe(document.body);
+})();
 
 // ─── Boot ────────────────────────────────────────────────────────────────────
 
