@@ -380,7 +380,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No KSIs reflect control satisfaction."
     },
     {
       "controlId": "ac-2",
@@ -392,7 +394,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 6,
+      "rationale": "3 of 4 mapped KSIs provide some evidence: KSI-IAM-JIT (STRONG); KSI-IAM-SNU (FAIR); KSI-IAM-SUS (FAIR). The strongest individual mapping (KSI-IAM-JIT, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. The remaining mapped KSI(s) (KSI-IAM-APM) are rated NONE and do not contribute to coverage. Measuring this control requires moderate additional tooling or integration but is largely automatable. Note: this is a broad, multi-part control; the contributing KSIs genuinely divide the labor \u2014 the authorization-model KSI covers roles/privileges, the non-user-account KSI covers service-account handling, and the suspicious-activity KSI covers a distinct disable trigger \u2014 rather than restating the same evidence."
     },
     {
       "controlId": "ac-2.1",
@@ -404,7 +408,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 9,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-IAM-JIT (STRONG); KSI-IAM-SUS (FAIR). The strongest individual mapping (KSI-IAM-JIT, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "ac-2.2",
@@ -416,7 +422,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 9,
+      "rationale": "3 of 3 mapped KSIs provide some evidence: KSI-IAM-AAM (STRONG); KSI-IAM-JIT (STRONG); KSI-IAM-SNU (WEAK). The strongest individual mapping (KSI-IAM-AAM, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "ac-2.3",
@@ -428,7 +436,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 9,
+      "rationale": "3 of 3 mapped KSIs provide some evidence: KSI-IAM-AAM (STRONG); KSI-IAM-JIT (FAIR); KSI-IAM-SUS (STRONG). The strongest individual mapping (KSI-IAM-AAM, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. This control can be measured largely through automated technical means. Note: the suspicious-activity-triggered disable KSI covers a distinct trigger scenario from the routine lifecycle-management KSIs, rather than restating the same evidence."
     },
     {
       "controlId": "ac-2.4",
@@ -440,7 +450,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 6,
+      "rationale": "4 of 4 mapped KSIs provide some evidence: KSI-IAM-JIT (WEAK); KSI-MLA-LET (FAIR); KSI-MLA-RVL (WEAK); KSI-SVC-ACM (WEAK). The strongest individual mapping (KSI-MLA-LET, FAIR) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. This control can be measured largely through automated technical means. Note: the additional mapped KSIs beyond the strongest one are partial, imperfect views of the same underlying question (are account actions logged) rather than evidence of different sub-parts, so they do not lift the collective picture materially."
     },
     {
       "controlId": "ac-2.5",
@@ -452,7 +464,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 3,
+      "rationale": "Inactivity logout is session hygiene, only loosely connected to whether access is scoped to actual need. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "ac-2.6",
@@ -464,7 +478,9 @@
       "core": false,
       "high": false,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 6,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-IAM-ELP (STRONG); KSI-IAM-JIT (STRONG). The strongest individual mapping (KSI-IAM-ELP, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "ac-2.7",
@@ -476,7 +492,9 @@
       "core": true,
       "high": false,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ac-2.9",
@@ -488,7 +506,9 @@
       "core": true,
       "high": false,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ac-2.11",
@@ -500,7 +520,9 @@
       "core": true,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ac-2.12",
@@ -512,7 +534,9 @@
       "core": true,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ac-2.13",
@@ -524,7 +548,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 6,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-IAM-AAM (STRONG); KSI-IAM-SUS (STRONG). The strongest individual mapping (KSI-IAM-AAM, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "ac-3",
@@ -536,7 +562,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 9,
+      "rationale": "3 of 3 mapped KSIs provide some evidence: KSI-IAM-APM (WEAK); KSI-IAM-ELP (STRONG); KSI-IAM-JIT (STRONG). The strongest individual mapping (KSI-IAM-ELP, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "ac-4",
@@ -548,7 +576,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 4,
+      "rationale": "2 of 3 mapped KSIs provide some evidence: KSI-IAM-ELP (FAIR); KSI-IAM-JIT (WEAK). The strongest individual mapping (KSI-IAM-ELP, FAIR) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. The remaining mapped KSI(s) (KSI-IAM-SNU) are rated NONE and do not contribute to coverage. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "ac-4.4",
@@ -560,7 +590,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ac-5",
@@ -572,7 +604,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 4,
+      "rationale": "Of 3 KSI mapping(s) for this control, only KSI-IAM-JIT (FAIR) provides any real signal. The collective assessment matches this single contributing mapping. The remaining mapped KSI(s) (KSI-PIY-RIS, KSI-PIY-RSD) are rated NONE and do not contribute to coverage. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "ac-6",
@@ -584,7 +618,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 6,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-IAM-ELP (STRONG); KSI-IAM-JIT (STRONG). The strongest individual mapping (KSI-IAM-ELP, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "ac-6.1",
@@ -596,7 +632,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 6,
+      "rationale": "Restricting who can access security functions is a subset of the broader least-privilege/RBAC model the KSI describes. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "ac-6.2",
@@ -608,7 +646,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 6,
+      "rationale": "Requiring non-privileged accounts for non-security functions is a subset requirement supporting least-privilege enforcement. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "ac-6.3",
@@ -620,7 +660,9 @@
       "core": true,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ac-6.5",
@@ -632,7 +674,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 9,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-IAM-JIT (STRONG); KSI-IAM-SNU (FAIR). The strongest individual mapping (KSI-IAM-JIT, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "ac-6.7",
@@ -644,7 +688,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 6,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-IAM-AAM (STRONG); KSI-IAM-JIT (STRONG). The strongest individual mapping (KSI-IAM-AAM, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "ac-6.8",
@@ -656,7 +702,9 @@
       "core": true,
       "high": false,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ac-6.9",
@@ -668,7 +716,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 6,
+      "rationale": "3 of 3 mapped KSIs provide some evidence: KSI-IAM-JIT (WEAK); KSI-MLA-LET (FAIR); KSI-MLA-RVL (WEAK). The strongest individual mapping (KSI-MLA-LET, FAIR) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "ac-6.10",
@@ -680,7 +730,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 9,
+      "rationale": "Preventing non-privileged users from executing privileged functions is a direct enforcement mechanism of the privilege model. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "ac-7",
@@ -692,7 +744,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 9,
+      "rationale": "Of 2 KSI mapping(s) for this control, only KSI-IAM-SUS (STRONG) provides any real signal. The collective assessment matches this single contributing mapping. The remaining mapped KSI(s) (KSI-IAM-JIT) are rated NONE and do not contribute to coverage. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "ac-8",
@@ -704,7 +758,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ac-10",
@@ -716,7 +772,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ac-11",
@@ -728,7 +786,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ac-11.1",
@@ -740,7 +800,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ac-12",
@@ -752,7 +814,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 3,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-CNA-ULN (WEAK); KSI-IAM-ELP (WEAK). The strongest individual mapping (KSI-CNA-ULN, WEAK) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "ac-14",
@@ -764,7 +828,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 2,
+      "rationale": "This concerns explicitly permitted unauthenticated actions, a narrow carve-out unrelated to scoping authenticated users' access. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "ac-17",
@@ -776,7 +842,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 4,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-IAM-ELP (FAIR); KSI-IAM-JIT (WEAK). The strongest individual mapping (KSI-IAM-ELP, FAIR) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "ac-17.1",
@@ -788,7 +856,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 6,
+      "rationale": "3 of 3 mapped KSIs provide some evidence: KSI-IAM-ELP (WEAK); KSI-MLA-LET (WEAK); KSI-MLA-OSM (WEAK). No single KSI alone reaches FAIR, but the contributing KSIs independently converge on the same underlying capability (or cover distinct facets of it), which supports raising the collective assessment from WEAK to FAIR. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "ac-17.2",
@@ -800,7 +870,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 6,
+      "rationale": "2 of 3 mapped KSIs provide some evidence: KSI-SVC-ASM (WEAK); KSI-SVC-SIN (FAIR). The strongest individual mapping (KSI-SVC-SIN, FAIR) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. The remaining mapped KSI(s) (KSI-IAM-ELP) are rated NONE and do not contribute to coverage. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "ac-17.3",
@@ -812,7 +884,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 9,
+      "rationale": "4 of 5 mapped KSIs provide some evidence: KSI-CNA-MAT (FAIR); KSI-CNA-RNT (FAIR); KSI-CNA-ULN (FAIR); KSI-IAM-ELP (WEAK). No single KSI alone reaches STRONG, but the contributing KSIs independently converge on the same underlying capability (or cover distinct facets of it), which supports raising the collective assessment from FAIR to STRONG. The remaining mapped KSI(s) (KSI-CNA-IBP) are rated NONE and do not contribute to coverage. This control can be measured largely through automated technical means. Note: no single KSI is a strong individual match, but three independently-designed KSIs (attack-surface review, traffic limiting, and flow-control enforcement) each measure a different technical facet of network path control and converge on the same underlying objective, which is why the collective assessment is raised above any individual mapping."
     },
     {
       "controlId": "ac-17.4",
@@ -824,7 +898,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ac-18",
@@ -836,7 +912,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ac-18.1",
@@ -848,7 +926,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 3,
+      "rationale": "Wireless-specific authentication/encryption only applies where wireless is in use and is a narrow slice of the broader attack-surface/lateral-movement concern. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "ac-18.3",
@@ -860,7 +940,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 3,
+      "rationale": "Disabling unused wireless capability is a narrow, wireless-specific hardening action rather than a general attack-surface/lateral-movement control. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "ac-18.4",
@@ -872,7 +954,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ac-18.5",
@@ -884,7 +968,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ac-19",
@@ -896,7 +982,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ac-19.5",
@@ -908,7 +996,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ac-20",
@@ -920,7 +1010,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 2,
+      "rationale": "3 of 3 mapped KSIs provide some evidence: KSI-IAM-ELP (WEAK); KSI-SCR-MIT (FAIR); KSI-SCR-MON (WEAK). The strongest individual mapping (KSI-SCR-MIT, FAIR) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "ac-20.1",
@@ -932,7 +1024,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 2,
+      "rationale": "3 of 5 mapped KSIs provide some evidence: KSI-CNA-MAT (WEAK); KSI-IAM-ELP (FAIR); KSI-IAM-JIT (WEAK). The strongest individual mapping (KSI-IAM-ELP, FAIR) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. The remaining mapped KSI(s) (KSI-MLA-LET, KSI-MLA-OSM) are rated NONE and do not contribute to coverage. Automating measurement of this control is difficult; meaningful evidence likely still requires human review. Note: neither of this control's two disjunctive satisfaction paths (verifying external-system controls, or retaining a signed connection/processing agreement) is directly evidenced by any of the mapped KSIs; the FAIR rating reflects general access-scoping review, not either specific path."
     },
     {
       "controlId": "ac-20.2",
@@ -944,7 +1038,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ac-21",
@@ -956,7 +1052,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ac-22",
@@ -968,7 +1066,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "at-1",
@@ -980,7 +1080,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "at-2",
@@ -992,7 +1094,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 3,
+      "rationale": "AT-2 is the general security/privacy literacy training requirement for all users - directly matches 'general training for all employees.' Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "at-2.2",
@@ -1004,7 +1108,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 2,
+      "rationale": "Insider-threat training is a specific topic within general awareness training; relevant but narrower than the overall training-effectiveness review the KSI describes. Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "at-2.3",
@@ -1016,7 +1122,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 2,
+      "rationale": "Social engineering training is a specific topic within general awareness training; relevant but narrower than the KSI's broader scope. Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "at-3",
@@ -1028,7 +1136,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 3,
+      "rationale": "AT-3 is the role-based training requirement - directly matches 'role-specific training for employees in high risk roles.' Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "at-3.5",
@@ -1040,7 +1150,9 @@
       "core": false,
       "high": false,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 1,
+      "rationale": "This is a narrow, role-specific training requirement (PII processing) that only applies to a subset of staff; a small piece of the overall training landscape. Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "at-4",
@@ -1052,7 +1164,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 6,
+      "rationale": "Training records support demonstrating that reviews of training effectiveness are occurring, but this control is about record-keeping, not the training content/delivery itself. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "au-1",
@@ -1064,7 +1178,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "au-2",
@@ -1076,7 +1192,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 6,
+      "rationale": "4 of 4 mapped KSIs provide some evidence: KSI-CMT-LMC (WEAK); KSI-MLA-LET (STRONG); KSI-MLA-OSM (FAIR); KSI-MLA-RVL (WEAK). The strongest individual mapping (KSI-MLA-LET, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "au-3",
@@ -1088,7 +1206,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 6,
+      "rationale": "Defining required audit record content supports what a SIEM must capture/ingest, though it doesn't address centralization/tamper-resistance directly. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "au-3.1",
@@ -1100,7 +1220,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 3,
+      "rationale": "This is a narrow enhancement (additional content fields), a supporting detail rather than core SIEM evidence. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "au-3.3",
@@ -1112,7 +1234,9 @@
       "core": false,
       "high": false,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 2,
+      "rationale": "This is a narrow privacy-by-design detail (limiting PII in audit logs); tangential to the overall SDLC security-review KSI. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "au-4",
@@ -1124,7 +1248,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 3,
+      "rationale": "Storage-capacity planning is an operational dependency, only loosely connected to the centralization/tamper-resistance concept. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "au-5",
@@ -1136,7 +1262,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 6,
+      "rationale": "Alerting on logging-process failure is relevant to a resilient, tamper-evident centralized logging pipeline, though it's a narrower failure-handling requirement. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "au-5.1",
@@ -1148,7 +1276,9 @@
       "core": true,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "au-5.2",
@@ -1160,7 +1290,9 @@
       "core": true,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "au-6",
@@ -1172,7 +1304,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 6,
+      "rationale": "AU-6 is literally 'review and analyze system audit records' - a direct, exact match to the KSI. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "au-6.1",
@@ -1184,7 +1318,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 9,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-MLA-OSM (STRONG); KSI-MLA-RVL (STRONG). The strongest individual mapping (KSI-MLA-OSM, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "au-6.3",
@@ -1196,7 +1332,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 6,
+      "rationale": "Correlating audit records across repositories for org-wide situational awareness is a defining SIEM function - a direct, strong match. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "au-6.4",
@@ -1208,7 +1346,9 @@
       "core": true,
       "high": false,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "au-6.5",
@@ -1220,7 +1360,9 @@
       "core": true,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "au-6.6",
@@ -1232,7 +1374,9 @@
       "core": true,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "au-6.7",
@@ -1244,7 +1388,9 @@
       "core": true,
       "high": false,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "au-7",
@@ -1256,7 +1402,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 6,
+      "rationale": "On-demand review/search/reporting capability is a SIEM-adjacent feature, relevant but not identical to the centralization/tamper-resistance concept. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "au-7.1",
@@ -1268,7 +1416,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 6,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-MLA-LET (WEAK); KSI-MLA-OSM (FAIR). The strongest individual mapping (KSI-MLA-OSM, FAIR) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "au-8",
@@ -1280,7 +1430,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 3,
+      "rationale": "Consistent timestamps are a data-quality requirement for logs; supportive but tangential to the SIEM/centralization/tamper-resistance concept. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "au-9",
@@ -1292,7 +1444,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 9,
+      "rationale": "Protecting audit information/tools from unauthorized access, modification, or deletion directly matches the 'tamper-resistant' language in the KSI. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "au-9.2",
@@ -1304,7 +1458,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "au-9.3",
@@ -1316,7 +1472,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "au-9.4",
@@ -1328,7 +1486,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 3,
+      "rationale": "Narrow scope (who can manage audit tooling), tangential to the broader authorization model. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "au-10",
@@ -1340,7 +1500,9 @@
       "core": true,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "au-11",
@@ -1352,7 +1514,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 3,
+      "rationale": "Retention duration is tangential to the centralization/tamper-resistance concept, though it's a related audit-management requirement. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "au-12",
@@ -1364,7 +1528,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 6,
+      "rationale": "Generating audit records for the defined event types is directly tied to ensuring the listed logging activities actually occur. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "au-12.1",
@@ -1376,7 +1542,9 @@
       "core": true,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "au-12.3",
@@ -1388,7 +1556,9 @@
       "core": true,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ca-1",
@@ -1400,7 +1570,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ca-2",
@@ -1412,7 +1584,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 2,
+      "rationale": "Control assessments generate data that could inform investment-effectiveness review, but CA-2 is about assessing control implementation, not security spend/investment effectiveness specifically. Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "ca-2.1",
@@ -1424,7 +1598,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No KSIs reflect control satisfaction."
     },
     {
       "controlId": "ca-2.2",
@@ -1436,7 +1612,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ca-3",
@@ -1448,7 +1626,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 2,
+      "rationale": "Concerns authorizing/documenting system interconnections, tangential to upstream vulnerability monitoring. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "ca-3.6",
@@ -1460,7 +1640,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ca-5",
@@ -1472,7 +1654,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ca-6",
@@ -1484,7 +1668,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ca-7",
@@ -1496,7 +1682,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 6,
+      "rationale": "CA-7 is the continuous monitoring control - ongoing assessment of control/configuration effectiveness is its core subject, directly matching persistent evaluation and testing. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "ca-7.1",
@@ -1508,7 +1696,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No KSIs reflect control satisfaction."
     },
     {
       "controlId": "ca-7.4",
@@ -1520,7 +1710,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 4,
+      "rationale": "General risk-monitoring integration is relevant but not supply-chain-specific. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "ca-8",
@@ -1532,7 +1724,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ca-8.1",
@@ -1544,7 +1738,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ca-8.2",
@@ -1556,7 +1752,9 @@
       "core": true,
       "high": false,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ca-9",
@@ -1568,7 +1766,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 6,
+      "rationale": "3 of 3 mapped KSIs provide some evidence: KSI-CNA-MAT (FAIR); KSI-CNA-RNT (FAIR); KSI-CNA-ULN (FAIR). No single KSI alone reaches STRONG, but the contributing KSIs independently converge on the same underlying capability (or cover distinct facets of it), which supports raising the collective assessment from FAIR to STRONG. Measuring this control requires moderate additional tooling or integration but is largely automatable. Note: no single KSI is a strong individual match, but three independently-designed KSIs (attack-surface review, traffic limiting, and flow-control enforcement) each measure a different technical facet of internal connection control and converge on the same underlying objective, which is why the collective assessment is raised above any individual mapping."
     },
     {
       "controlId": "cm-1",
@@ -1580,7 +1780,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "cm-2",
@@ -1592,7 +1794,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 6,
+      "rationale": "5 of 5 mapped KSIs provide some evidence: KSI-CMT-RMV (FAIR); KSI-CNA-DFP (FAIR); KSI-CNA-IBP (WEAK); KSI-MLA-EVC (FAIR); KSI-SVC-ACM (STRONG). The strongest individual mapping (KSI-SVC-ACM, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "cm-2.2",
@@ -1604,7 +1808,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 9,
+      "rationale": "3 of 3 mapped KSIs provide some evidence: KSI-PIY-GIV (STRONG); KSI-SVC-ACM (STRONG); KSI-SVC-VRI (WEAK). The strongest individual mapping (KSI-PIY-GIV, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "cm-2.3",
@@ -1616,7 +1822,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 6,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-RPL-ABO (WEAK); KSI-SVC-ACM (FAIR). The strongest individual mapping (KSI-SVC-ACM, FAIR) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "cm-2.7",
@@ -1628,7 +1836,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No KSIs reflect control satisfaction."
     },
     {
       "controlId": "cm-3",
@@ -1640,7 +1850,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 3,
+      "rationale": "4 of 4 mapped KSIs provide some evidence: KSI-CMT-LMC (FAIR); KSI-CMT-RMV (WEAK); KSI-CMT-RVP (STRONG); KSI-CMT-VTD (WEAK). The strongest individual mapping (KSI-CMT-RVP, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "cm-3.1",
@@ -1652,7 +1864,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "cm-3.2",
@@ -1664,7 +1878,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 6,
+      "rationale": "3 of 3 mapped KSIs provide some evidence: KSI-CMT-LMC (WEAK); KSI-CMT-RVP (FAIR); KSI-CMT-VTD (STRONG). The strongest individual mapping (KSI-CMT-VTD, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "cm-3.4",
@@ -1676,7 +1892,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 2,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-CMT-RVP (WEAK); KSI-PIY-RSD (FAIR). The strongest individual mapping (KSI-PIY-RSD, FAIR) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "cm-3.6",
@@ -1688,7 +1906,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "cm-4",
@@ -1700,7 +1920,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "cm-4.1",
@@ -1712,7 +1934,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "cm-4.2",
@@ -1724,7 +1948,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 6,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-CMT-LMC (WEAK); KSI-CMT-VTD (STRONG). The strongest individual mapping (KSI-CMT-VTD, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "cm-5",
@@ -1736,7 +1962,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 4,
+      "rationale": "3 of 3 mapped KSIs provide some evidence: KSI-CMT-RMV (WEAK); KSI-CMT-RVP (WEAK); KSI-IAM-JIT (FAIR). The strongest individual mapping (KSI-IAM-JIT, FAIR) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "cm-5.1",
@@ -1748,7 +1976,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "cm-6",
@@ -1760,7 +1990,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 6,
+      "rationale": "4 of 4 mapped KSIs provide some evidence: KSI-CMT-LMC (FAIR); KSI-CMT-RMV (WEAK); KSI-MLA-EVC (FAIR); KSI-SVC-ACM (STRONG). The strongest individual mapping (KSI-SVC-ACM, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Measuring this control requires moderate additional tooling or integration but is largely automatable. Note: none of the mapped KSIs address CM-6(c), the requirement to identify, document, and approve deviations from established configuration settings \u2014 this sub-part is not evidenced by any current mapping despite the otherwise strong coverage."
     },
     {
       "controlId": "cm-6.1",
@@ -1772,7 +2004,9 @@
       "core": true,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "cm-6.2",
@@ -1784,7 +2018,9 @@
       "core": true,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "cm-7",
@@ -1796,7 +2032,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No KSIs reflect control satisfaction."
     },
     {
       "controlId": "cm-7.1",
@@ -1808,7 +2046,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 6,
+      "rationale": "4 of 4 mapped KSIs provide some evidence: KSI-CMT-RVP (WEAK); KSI-CNA-RNT (STRONG); KSI-SVC-ACM (FAIR); KSI-SVC-EIS (FAIR). The strongest individual mapping (KSI-CNA-RNT, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "cm-7.2",
@@ -1820,7 +2060,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No KSIs reflect control satisfaction."
     },
     {
       "controlId": "cm-7.5",
@@ -1832,7 +2074,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 2,
+      "rationale": "Of 2 KSI mapping(s) for this control, only KSI-PIY-GIV (WEAK) provides any real signal. The collective assessment matches this single contributing mapping. The remaining mapped KSI(s) (KSI-IAM-JIT) are rated NONE and do not contribute to coverage. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "cm-8",
@@ -1844,7 +2088,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 9,
+      "rationale": "CM-8 is literally the system component inventory control - a direct, core match. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "cm-8.1",
@@ -1856,7 +2102,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 9,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-CMT-RMV (FAIR); KSI-PIY-GIV (STRONG). The strongest individual mapping (KSI-PIY-GIV, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "cm-8.2",
@@ -1868,7 +2116,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "cm-8.3",
@@ -1880,7 +2130,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 6,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-CMT-LMC (WEAK); KSI-SVC-VRI (FAIR). The strongest individual mapping (KSI-SVC-VRI, FAIR) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "cm-8.4",
@@ -1892,7 +2144,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "cm-9",
@@ -1904,7 +2158,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 2,
+      "rationale": "Of 3 KSI mapping(s) for this control, only KSI-CMT-RVP (FAIR) provides any real signal. The collective assessment matches this single contributing mapping. The remaining mapped KSI(s) (KSI-IAM-ELP, KSI-IAM-JIT) are rated NONE and do not contribute to coverage. Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "cm-10",
@@ -1916,7 +2172,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "cm-11",
@@ -1928,7 +2186,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "cm-12",
@@ -1940,7 +2200,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 2,
+      "rationale": "Locating information/components is a related but distinct inventory dimension (data location vs. general component inventory). Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "cm-12.1",
@@ -1952,7 +2214,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 4,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-PIY-GIV (FAIR); KSI-SVC-EIS (WEAK). The strongest individual mapping (KSI-PIY-GIV, FAIR) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "cp-1",
@@ -1964,7 +2228,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "cp-2",
@@ -1976,7 +2242,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 3,
+      "rationale": "CP-2 is literally the contingency/recovery plan control, including recovery objectives - a direct, core match. Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "cp-2.1",
@@ -1988,7 +2256,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 2,
+      "rationale": "3 of 3 mapped KSIs provide some evidence: KSI-PIY-RIS (WEAK); KSI-RPL-ARP (FAIR); KSI-RPL-TRC (WEAK). The strongest individual mapping (KSI-RPL-ARP, FAIR) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "cp-2.2",
@@ -2000,7 +2270,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "cp-2.3",
@@ -2012,7 +2284,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 6,
+      "rationale": "3 of 3 mapped KSIs provide some evidence: KSI-RPL-ARP (STRONG); KSI-RPL-RRO (STRONG); KSI-RPL-TRC (FAIR). The strongest individual mapping (KSI-RPL-ARP, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "cp-2.5",
@@ -2024,7 +2298,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "cp-2.8",
@@ -2036,7 +2312,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 1,
+      "rationale": "Identifying a risk-tiered subset of critical assets for contingency planning is a narrower purpose-specific inventory activity, not general automated inventory generation. Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "cp-3",
@@ -2048,7 +2326,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 3,
+      "rationale": "Contingency training is explicitly named in the KSI's description ('training for staff involved with... disaster recovery'). Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "cp-3.1",
@@ -2060,7 +2340,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "cp-4",
@@ -2072,7 +2354,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 3,
+      "rationale": "CP-4 is literally the contingency plan testing control - a direct, exact match. Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "cp-4.1",
@@ -2084,7 +2368,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 2,
+      "rationale": "3 of 3 mapped KSIs provide some evidence: KSI-PIY-RIS (WEAK); KSI-RPL-ARP (WEAK); KSI-RPL-TRC (FAIR). The strongest individual mapping (KSI-RPL-TRC, FAIR) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "cp-4.2",
@@ -2096,7 +2382,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "cp-6",
@@ -2108,7 +2396,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 4,
+      "rationale": "3 of 3 mapped KSIs provide some evidence: KSI-RPL-ABO (FAIR); KSI-RPL-ARP (FAIR); KSI-RPL-TRC (WEAK). The strongest individual mapping (KSI-RPL-ABO, FAIR) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "cp-6.1",
@@ -2120,7 +2410,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 2,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-RPL-ARP (WEAK); KSI-RPL-TRC (WEAK). The strongest individual mapping (KSI-RPL-ARP, WEAK) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "cp-6.2",
@@ -2132,7 +2424,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "cp-6.3",
@@ -2144,7 +2438,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "A specific site-accessibility detail; narrow slice. This control cannot be measured through automation and depends on non-automatable evidence such as documentation, personnel actions, or human judgment."
     },
     {
       "controlId": "cp-7",
@@ -2156,7 +2452,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 4,
+      "rationale": "Alternate processing siting is a core recovery-plan element relevant to plan-objective alignment. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "cp-7.1",
@@ -2168,7 +2466,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 2,
+      "rationale": "A specific site-risk detail; narrow slice. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "cp-7.2",
@@ -2180,7 +2480,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "A specific site-accessibility detail; narrow slice. This control cannot be measured through automation and depends on non-automatable evidence such as documentation, personnel actions, or human judgment."
     },
     {
       "controlId": "cp-7.3",
@@ -2192,7 +2494,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "A narrow contractual detail; tangential to plan-objective alignment review. This control cannot be measured through automation and depends on non-automatable evidence such as documentation, personnel actions, or human judgment."
     },
     {
       "controlId": "cp-7.4",
@@ -2204,7 +2508,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "cp-8",
@@ -2216,7 +2522,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 4,
+      "rationale": "Telecommunications continuity is a recovery-plan element relevant to objective alignment, a relevant subset. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "cp-8.1",
@@ -2228,7 +2536,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "A narrow contractual detail; tangential. This control cannot be measured through automation and depends on non-automatable evidence such as documentation, personnel actions, or human judgment."
     },
     {
       "controlId": "cp-8.2",
@@ -2240,7 +2550,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 2,
+      "rationale": "A narrow resiliency detail; tangential to plan/objective alignment review. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "cp-8.3",
@@ -2252,7 +2564,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "cp-8.4",
@@ -2264,7 +2578,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "cp-9",
@@ -2276,7 +2592,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 9,
+      "rationale": "CP-9 is literally the system backup control - a direct, core match. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "cp-9.1",
@@ -2288,7 +2606,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 9,
+      "rationale": "Testing backup media for reliability/integrity is a direct, core recovery-capability test. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "cp-9.2",
@@ -2300,7 +2620,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "cp-9.3",
@@ -2312,7 +2634,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "cp-9.5",
@@ -2324,7 +2648,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "cp-9.8",
@@ -2336,7 +2662,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 9,
+      "rationale": "Directly matches encrypting backup information from disclosure/modification. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "cp-10",
@@ -2348,7 +2676,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 6,
+      "rationale": "4 of 4 mapped KSIs provide some evidence: KSI-RPL-ABO (STRONG); KSI-RPL-ARP (STRONG); KSI-RPL-RRO (STRONG); KSI-RPL-TRC (FAIR). The strongest individual mapping (KSI-RPL-ABO, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Measuring this control requires moderate additional tooling or integration but is largely automatable. Note: three independently-designed recovery-focused KSIs (backup alignment, plan alignment, and RTO/RPO definition) all converge on the same underlying recovery-objective evidence; this agreement across independent signals supports high confidence in the STRONG rating, though it reflects convergence rather than coverage of distinct sub-parts."
     },
     {
       "controlId": "cp-10.2",
@@ -2360,7 +2690,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 4,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-RPL-ABO (FAIR); KSI-RPL-ARP (FAIR). The strongest individual mapping (KSI-RPL-ABO, FAIR) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "cp-10.4",
@@ -2372,7 +2704,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ia-1",
@@ -2384,7 +2718,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ia-2",
@@ -2396,7 +2732,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 6,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-IAM-APM (FAIR); KSI-IAM-ELP (FAIR). The strongest individual mapping (KSI-IAM-APM, FAIR) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "ia-2.1",
@@ -2408,7 +2746,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 9,
+      "rationale": "MFA for privileged accounts is directly named territory of the KSI. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "ia-2.2",
@@ -2420,7 +2760,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 9,
+      "rationale": "MFA for non-privileged accounts is directly named territory of the KSI. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "ia-2.5",
@@ -2432,7 +2774,9 @@
       "core": true,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ia-2.6",
@@ -2444,7 +2788,9 @@
       "core": true,
       "high": false,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ia-2.8",
@@ -2456,7 +2802,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 9,
+      "rationale": "Replay-resistant authentication directly supports the 'phishing-resistant MFA' language in the KSI. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "ia-2.12",
@@ -2468,7 +2816,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ia-3",
@@ -2480,7 +2830,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 9,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-IAM-ELP (WEAK); KSI-IAM-SNU (STRONG). The strongest individual mapping (KSI-IAM-SNU, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "ia-4",
@@ -2492,7 +2844,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 2,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-IAM-ELP (WEAK); KSI-IAM-JIT (WEAK). The strongest individual mapping (KSI-IAM-ELP, WEAK) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "ia-4.4",
@@ -2504,7 +2858,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 6,
+      "rationale": "3 of 3 mapped KSIs provide some evidence: KSI-IAM-AAM (FAIR); KSI-IAM-ELP (WEAK); KSI-IAM-JIT (WEAK). The strongest individual mapping (KSI-IAM-AAM, FAIR) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "ia-5",
@@ -2516,7 +2872,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 4,
+      "rationale": "General authenticator lifecycle management supports but is broader than the specific method choice (passwordless vs. password+MFA) the KSI describes. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "ia-5.1",
@@ -2528,7 +2886,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 9,
+      "rationale": "This directly supports the KSI's fallback path ('otherwise strong passwords... is used'). This control can be measured largely through automated technical means."
     },
     {
       "controlId": "ia-5.2",
@@ -2540,7 +2900,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 9,
+      "rationale": "3 of 4 mapped KSIs provide some evidence: KSI-IAM-APM (STRONG); KSI-IAM-SNU (STRONG); KSI-SVC-ASM (FAIR). The strongest individual mapping (KSI-IAM-APM, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. The remaining mapped KSI(s) (KSI-IAM-ELP) are rated NONE and do not contribute to coverage. This control can be measured largely through automated technical means. Note: the contributing KSIs cover genuinely different facets of this control \u2014 passwordless/human authentication, non-user/service authentication, and certificate lifecycle management \u2014 rather than restating the same evidence."
     },
     {
       "controlId": "ia-5.6",
@@ -2552,7 +2914,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 6,
+      "rationale": "2 of 3 mapped KSIs provide some evidence: KSI-IAM-APM (FAIR); KSI-SVC-ASM (FAIR). No single KSI alone reaches STRONG, but the contributing KSIs independently converge on the same underlying capability (or cover distinct facets of it), which supports raising the collective assessment from FAIR to STRONG. The remaining mapped KSI(s) (KSI-IAM-ELP) are rated NONE and do not contribute to coverage. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "ia-6",
@@ -2564,7 +2928,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 2,
+      "rationale": "Obscuring authentication feedback (e.g., masking password entry) is a supporting detail, not central to the passwordless/MFA adoption decision. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "ia-7",
@@ -2576,7 +2942,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No KSIs reflect control satisfaction."
     },
     {
       "controlId": "ia-8",
@@ -2588,7 +2956,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 3,
+      "rationale": "Extends identification/authentication requirements to non-organizational users; relevant only if such users are in scope, and doesn't speak to method choice specifically. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "ia-8.1",
@@ -2600,7 +2970,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ia-8.2",
@@ -2612,7 +2984,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ia-8.4",
@@ -2624,7 +2998,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ia-11",
@@ -2636,7 +3012,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 3,
+      "rationale": "Re-authentication triggers are session/authentication hygiene, tangential to privilege scoping. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "ia-12",
@@ -2648,7 +3026,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 2,
+      "rationale": "Identity proofing occurs at initial account creation/registration; it's about verifying who a person is, not the ongoing lifecycle/privilege management of existing accounts. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "ia-12.2",
@@ -2660,7 +3040,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 2,
+      "rationale": "This is a narrow sub-requirement of identity proofing (presenting evidence), tangential to ongoing account lifecycle/privilege automation. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "ia-12.3",
@@ -2672,7 +3054,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 2,
+      "rationale": "Same identity-proofing family as above; tangential to ongoing lifecycle/privilege management. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "ia-12.4",
@@ -2684,7 +3068,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ia-12.5",
@@ -2696,7 +3082,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No KSIs reflect control satisfaction."
     },
     {
       "controlId": "ir-1",
@@ -2708,7 +3096,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ir-2",
@@ -2720,7 +3110,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 3,
+      "rationale": "Incident response training is explicitly named in the KSI's description ('training for staff involved with incident response'). Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "ir-2.1",
@@ -2732,7 +3124,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ir-2.2",
@@ -2744,7 +3138,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ir-2.3",
@@ -2756,7 +3152,9 @@
       "core": false,
       "high": false,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 1,
+      "rationale": "This is a narrow subset of incident response training (breach-specific reporting), not representative of the broader IR training requirement. Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "ir-3",
@@ -2768,7 +3166,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 3,
+      "rationale": "3 of 3 mapped KSIs provide some evidence: KSI-INR-AAR (FAIR); KSI-INR-RPI (WEAK); KSI-RPL-TRC (STRONG). The strongest individual mapping (KSI-RPL-TRC, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "ir-3.2",
@@ -2780,7 +3180,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 2,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-PIY-RIS (WEAK); KSI-RPL-TRC (FAIR). The strongest individual mapping (KSI-RPL-TRC, FAIR) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "ir-4",
@@ -2792,7 +3194,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 6,
+      "rationale": "3 of 3 mapped KSIs provide some evidence: KSI-INR-AAR (FAIR); KSI-INR-RIR (STRONG); KSI-INR-RPI (FAIR). The strongest individual mapping (KSI-INR-RIR, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "ir-4.1",
@@ -2804,7 +3208,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 6,
+      "rationale": "4 of 4 mapped KSIs provide some evidence: KSI-INR-AAR (WEAK); KSI-INR-RIR (FAIR); KSI-INR-RPI (WEAK); KSI-MLA-OSM (WEAK). The strongest individual mapping (KSI-INR-RIR, FAIR) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "ir-4.2",
@@ -2816,7 +3222,9 @@
       "core": true,
       "high": false,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ir-4.4",
@@ -2828,7 +3236,9 @@
       "core": true,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ir-4.6",
@@ -2840,7 +3250,9 @@
       "core": true,
       "high": false,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ir-4.11",
@@ -2852,7 +3264,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ir-5",
@@ -2864,7 +3278,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 9,
+      "rationale": "Tracking and documenting incidents provides the historical record this KSI's retrospective review directly depends on - a strong, foundational match. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "ir-5.1",
@@ -2876,7 +3292,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ir-6",
@@ -2888,7 +3306,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 4,
+      "rationale": "Incident reporting procedures are a direct sub-component of the overall IR procedure set the KSI describes reviewing. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "ir-6.1",
@@ -2900,7 +3320,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 3,
+      "rationale": "This is a narrow automation detail of the reporting sub-process. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "ir-6.3",
@@ -2912,7 +3334,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 4,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-INR-RIR (WEAK); KSI-SCR-MON (FAIR). The strongest individual mapping (KSI-SCR-MON, FAIR) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "ir-7",
@@ -2924,7 +3348,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 4,
+      "rationale": "The IR support/assistance resource is part of the overall IR capability whose procedures are being reviewed. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "ir-7.1",
@@ -2936,7 +3362,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 3,
+      "rationale": "Narrow automation enhancement for support availability. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "ir-8",
@@ -2948,7 +3376,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 3,
+      "rationale": "3 of 3 mapped KSIs provide some evidence: KSI-INR-AAR (STRONG); KSI-INR-RIR (STRONG); KSI-INR-RPI (FAIR). The strongest individual mapping (KSI-INR-AAR, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Automating measurement of this control is difficult; meaningful evidence likely still requires human review. Note: the three mapped KSIs (after-action reporting, procedure-effectiveness review, and retrospective pattern analysis) converge on the same underlying evidence \u2014 that the IR plan is actively used and updated \u2014 reinforcing confidence in the STRONG rating through independent agreement."
     },
     {
       "controlId": "ir-8.1",
@@ -2960,7 +3390,9 @@
       "core": false,
       "high": false,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 2,
+      "rationale": "Breach-specific plan content is a component of the overall IR plan under review. Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "ma-1",
@@ -2972,7 +3404,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ma-2",
@@ -2984,7 +3418,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 1,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-CMT-LMC (WEAK); KSI-SVC-EIS (WEAK). The strongest individual mapping (KSI-CMT-LMC, WEAK) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "ma-2.2",
@@ -2996,7 +3432,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ma-3",
@@ -3008,7 +3446,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ma-3.1",
@@ -3020,7 +3460,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ma-3.2",
@@ -3032,7 +3474,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ma-3.3",
@@ -3044,7 +3488,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ma-4",
@@ -3056,7 +3502,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ma-4.3",
@@ -3068,7 +3516,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ma-5",
@@ -3080,7 +3530,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ma-5.1",
@@ -3092,7 +3544,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ma-6",
@@ -3104,7 +3558,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "mp-1",
@@ -3116,7 +3572,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "mp-2",
@@ -3128,7 +3586,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "mp-3",
@@ -3140,7 +3600,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "mp-4",
@@ -3152,7 +3614,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "mp-5",
@@ -3164,7 +3628,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "mp-6",
@@ -3176,7 +3642,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "mp-6.1",
@@ -3188,7 +3656,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "mp-6.2",
@@ -3200,7 +3670,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "mp-6.3",
@@ -3212,7 +3684,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "mp-7",
@@ -3224,7 +3698,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "pe-1",
@@ -3236,7 +3712,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "pe-2",
@@ -3248,7 +3726,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "pe-3",
@@ -3260,7 +3740,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "pe-3.1",
@@ -3272,7 +3754,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "pe-4",
@@ -3284,7 +3768,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "pe-5",
@@ -3296,7 +3782,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "pe-6",
@@ -3308,7 +3796,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "pe-6.1",
@@ -3320,7 +3810,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "pe-6.4",
@@ -3332,7 +3824,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "pe-8",
@@ -3344,7 +3838,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "pe-8.1",
@@ -3356,7 +3852,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "pe-9",
@@ -3368,7 +3866,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "pe-10",
@@ -3380,7 +3880,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "pe-11",
@@ -3392,7 +3894,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "pe-11.1",
@@ -3404,7 +3908,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "pe-12",
@@ -3416,7 +3922,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "pe-13",
@@ -3428,7 +3936,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "pe-13.1",
@@ -3440,7 +3950,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "pe-13.2",
@@ -3452,7 +3964,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "pe-14",
@@ -3464,7 +3978,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "pe-15",
@@ -3476,7 +3992,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "pe-15.1",
@@ -3488,7 +4006,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "pe-16",
@@ -3500,7 +4020,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "pe-17",
@@ -3512,7 +4034,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "pe-18",
@@ -3524,7 +4048,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "pl-1",
@@ -3536,7 +4062,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "pl-2",
@@ -3548,7 +4076,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "pl-4",
@@ -3560,7 +4090,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "pl-4.1",
@@ -3572,7 +4104,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "pl-8",
@@ -3584,7 +4118,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 3,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-PIY-RSD (STRONG); KSI-SVC-EIS (FAIR). The strongest individual mapping (KSI-PIY-RSD, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "pl-9",
@@ -3596,7 +4132,9 @@
       "core": false,
       "high": false,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 6,
+      "rationale": "Centralized management of controls supports automated configuration management, relevant but a general enabling capability. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "pl-10",
@@ -3608,7 +4146,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "Of 2 KSI mapping(s) for this control, only KSI-SVC-ACM (WEAK) provides any real signal. The collective assessment matches this single contributing mapping. The remaining mapped KSI(s) (KSI-CNA-IBP) are rated NONE and do not contribute to coverage. This control cannot be measured through automation and depends on non-automatable evidence such as documentation, personnel actions, or human judgment."
     },
     {
       "controlId": "pl-11",
@@ -3620,7 +4160,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "pm-3",
@@ -3632,7 +4174,9 @@
       "core": false,
       "high": false,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "PM-3 directly governs budgeting/resourcing for the security and privacy programs - a core, direct match to 'investments in security.' This control cannot be measured through automation and depends on non-automatable evidence such as documentation, personnel actions, or human judgment."
     },
     {
       "controlId": "pm-7",
@@ -3644,7 +4188,9 @@
       "core": false,
       "high": false,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 2,
+      "rationale": "Enterprise architecture consideration of security is relevant but broader/less SDLC-specific than the KSI describes. Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "ps-1",
@@ -3656,7 +4202,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ps-2",
@@ -3668,7 +4216,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-IAM-ELP (WEAK); KSI-IAM-JIT (WEAK). The strongest individual mapping (KSI-IAM-ELP, WEAK) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. This control cannot be measured through automation and depends on non-automatable evidence such as documentation, personnel actions, or human judgment."
     },
     {
       "controlId": "ps-3",
@@ -3680,7 +4230,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No KSIs reflect control satisfaction."
     },
     {
       "controlId": "ps-4",
@@ -3692,7 +4244,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 6,
+      "rationale": "3 of 3 mapped KSIs provide some evidence: KSI-IAM-ELP (FAIR); KSI-IAM-JIT (FAIR); KSI-IAM-SUS (WEAK). The strongest individual mapping (KSI-IAM-ELP, FAIR) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "ps-4.2",
@@ -3704,7 +4258,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ps-5",
@@ -3716,7 +4272,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 6,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-IAM-ELP (STRONG); KSI-IAM-JIT (STRONG). The strongest individual mapping (KSI-IAM-ELP, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "ps-6",
@@ -3728,7 +4286,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No KSIs reflect control satisfaction."
     },
     {
       "controlId": "ps-7",
@@ -3740,7 +4300,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No KSIs reflect control satisfaction."
     },
     {
       "controlId": "ps-8",
@@ -3752,7 +4314,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "Personnel sanctions are a disciplinary/HR process; they don't themselves technically secure the account in response to detected suspicious activity. This control cannot be measured through automation and depends on non-automatable evidence such as documentation, personnel actions, or human judgment."
     },
     {
       "controlId": "ps-9",
@@ -3764,7 +4328,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No KSIs reflect control satisfaction."
     },
     {
       "controlId": "ra-1",
@@ -3776,7 +4342,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ra-2",
@@ -3788,7 +4356,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ra-3",
@@ -3800,7 +4370,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ra-3.1",
@@ -3812,7 +4384,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 3,
+      "rationale": "RA-3(1) is literally the supply chain risk assessment control - a direct, exact match. Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "ra-5",
@@ -3824,7 +4398,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 9,
+      "rationale": "RA-5 is the core vulnerability-monitoring/scanning control - the closest direct match, though not third-party-specific by itself. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "ra-5.2",
@@ -3836,7 +4412,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ra-5.3",
@@ -3848,7 +4426,9 @@
       "core": true,
       "high": false,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ra-5.4",
@@ -3860,7 +4440,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ra-5.5",
@@ -3872,7 +4454,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 3,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-IAM-JIT (WEAK); KSI-IAM-SNU (WEAK). The strongest individual mapping (KSI-IAM-JIT, WEAK) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "ra-5.11",
@@ -3884,7 +4468,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 6,
+      "rationale": "RA-5(11) is literally the public vulnerability disclosure/reporting channel control - a direct, exact match. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "ra-7",
@@ -3896,7 +4482,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "ra-9",
@@ -3908,7 +4496,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "sa-1",
@@ -3920,7 +4510,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "sa-2",
@@ -3932,7 +4524,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "SA-2 directly requires determining and allocating resources to protect the system - a core, direct match. This control cannot be measured through automation and depends on non-automatable evidence such as documentation, personnel actions, or human judgment."
     },
     {
       "controlId": "sa-3",
@@ -3944,7 +4538,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 6,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-PIY-RIS (WEAK); KSI-PIY-RSD (STRONG). The strongest individual mapping (KSI-PIY-RSD, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "sa-4",
@@ -3956,7 +4552,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "sa-4.1",
@@ -3968,7 +4566,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "sa-4.2",
@@ -3980,7 +4580,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "sa-4.5",
@@ -3992,7 +4594,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "sa-4.9",
@@ -4004,7 +4608,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "sa-4.10",
@@ -4016,7 +4622,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "sa-5",
@@ -4028,7 +4636,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "System documentation supports understanding secure configuration but isn't itself the automated management/drift-detection activity. This control cannot be measured through automation and depends on non-automatable evidence such as documentation, personnel actions, or human judgment."
     },
     {
       "controlId": "sa-8",
@@ -4040,7 +4650,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 3,
+      "rationale": "Applying security/privacy engineering principles directly matches 'Secure by Design principles' in development - a core match. Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "sa-9",
@@ -4052,7 +4664,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 3,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-SCR-MIT (STRONG); KSI-SCR-MON (FAIR). The strongest individual mapping (KSI-SCR-MIT, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "sa-9.2",
@@ -4064,7 +4678,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "sa-10",
@@ -4076,7 +4692,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 2,
+      "rationale": "Developer configuration management reduces supply-chain risk from a specific angle (build integrity), a relevant subset. Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "sa-11",
@@ -4088,7 +4706,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 2,
+      "rationale": "Developer security testing reduces supply-chain risk from a specific angle, a relevant subset. Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "sa-11.1",
@@ -4100,7 +4720,9 @@
       "core": true,
       "high": false,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "sa-15",
@@ -4112,7 +4734,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "sa-15.3",
@@ -4124,7 +4748,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 3,
+      "rationale": "Criticality analysis directly supports identifying/prioritizing supply-chain risk - a strong match. Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "sa-16",
@@ -4136,7 +4762,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "sa-17",
@@ -4148,7 +4776,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "sa-21",
@@ -4160,7 +4790,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "sa-22",
@@ -4172,7 +4804,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 4,
+      "rationale": "Addresses a specific supply-chain risk (unsupported/EOL components), a relevant subset. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "sc-1",
@@ -4184,7 +4818,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "sc-2",
@@ -4196,7 +4832,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 2,
+      "rationale": "Architectural separation of user/system functionality is tangential to identity-based JIT/RBAC design. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "sc-3",
@@ -4208,7 +4846,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "sc-4",
@@ -4220,7 +4860,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 3,
+      "rationale": "4 of 4 mapped KSIs provide some evidence: KSI-CNA-ULN (WEAK); KSI-IAM-ELP (WEAK); KSI-PIY-RSD (WEAK); KSI-SVC-PRR (STRONG). The strongest individual mapping (KSI-SVC-PRR, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Automating measurement of this control is difficult; meaningful evidence likely still requires human review. Note: three of the four mapped KSIs address unrelated security domains (network flow control, access scoping, SDLC practices) rather than shared-resource information leakage specifically; the collective picture is effectively carried by the single STRONG mapping."
     },
     {
       "controlId": "sc-5",
@@ -4232,7 +4874,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 6,
+      "rationale": "SC-5 is literally the denial-of-service protection control - a direct, core match to reviewing DoS-attack protection effectiveness. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "sc-7",
@@ -4244,7 +4888,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 9,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-CNA-ULN (STRONG); KSI-SVC-EIS (WEAK). The strongest individual mapping (KSI-CNA-ULN, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "sc-7.3",
@@ -4256,7 +4902,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 9,
+      "rationale": "Limiting the number of external network connections directly reduces exposed attack surface - a core, direct match. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "sc-7.4",
@@ -4268,7 +4916,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 6,
+      "rationale": "Managed interfaces and traffic-flow policy at external boundaries support attack-surface reduction, though this control is broader (covers policy/confidentiality/integrity) than surface minimization alone. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "sc-7.5",
@@ -4280,7 +4930,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 9,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-CNA-MAT (STRONG); KSI-CNA-RNT (STRONG). The strongest individual mapping (KSI-CNA-MAT, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "sc-7.7",
@@ -4292,7 +4944,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 6,
+      "rationale": "Preventing split tunneling is a specific traffic-routing requirement directly relevant to enforcing flow through managed paths for remote devices. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "sc-7.8",
@@ -4304,7 +4958,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 6,
+      "rationale": "Routing traffic through authenticated proxies reduces direct exposure of internal resources, a relevant but narrower mechanism. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "sc-7.12",
@@ -4316,7 +4972,9 @@
       "core": true,
       "high": false,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "sc-7.18",
@@ -4328,7 +4986,9 @@
       "core": true,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "sc-7.20",
@@ -4340,7 +5000,9 @@
       "core": true,
       "high": false,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "sc-7.21",
@@ -4352,7 +5014,9 @@
       "core": true,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "sc-8",
@@ -4364,7 +5028,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 9,
+      "rationale": "Of 3 KSI mapping(s) for this control, only KSI-SVC-SIN (STRONG) provides any real signal. The collective assessment matches this single contributing mapping. The remaining mapped KSI(s) (KSI-CNA-MAT, KSI-CNA-ULN) are rated NONE and do not contribute to coverage. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "sc-8.1",
@@ -4376,7 +5042,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 9,
+      "rationale": "SC-8(1) directly matches explicit encryption during transmission. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "sc-10",
@@ -4388,7 +5056,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 3,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-CNA-MAT (WEAK); KSI-CNA-ULN (WEAK). The strongest individual mapping (KSI-CNA-MAT, WEAK) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "sc-12",
@@ -4400,7 +5070,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 9,
+      "rationale": "SC-12 is literally the cryptographic key management control - a direct, core match. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "sc-12.1",
@@ -4412,7 +5084,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "sc-13",
@@ -4424,7 +5098,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 6,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-SVC-SIN (STRONG); KSI-SVC-VRI (FAIR). The strongest individual mapping (KSI-SVC-SIN, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "sc-15",
@@ -4436,7 +5112,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "sc-17",
@@ -4448,7 +5126,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 9,
+      "rationale": "SC-17 directly addresses certificate issuance/management - a direct, core match. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "sc-18",
@@ -4460,7 +5140,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 2,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-PIY-RSD (WEAK); KSI-SCR-MIT (WEAK). The strongest individual mapping (KSI-PIY-RSD, WEAK) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "sc-20",
@@ -4472,7 +5154,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 3,
+      "rationale": "Of 2 KSI mapping(s) for this control, only KSI-SVC-SIN (WEAK) provides any real signal. The collective assessment matches this single contributing mapping. The remaining mapped KSI(s) (KSI-IAM-ELP) are rated NONE and do not contribute to coverage. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "sc-21",
@@ -4484,7 +5168,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 3,
+      "rationale": "Of 2 KSI mapping(s) for this control, only KSI-SVC-SIN (WEAK) provides any real signal. The collective assessment matches this single contributing mapping. The remaining mapped KSI(s) (KSI-IAM-ELP) are rated NONE and do not contribute to coverage. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "sc-22",
@@ -4496,7 +5182,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 1,
+      "rationale": "Of 2 KSI mapping(s) for this control, only KSI-SVC-SIN (WEAK) provides any real signal. The collective assessment matches this single contributing mapping. The remaining mapped KSI(s) (KSI-IAM-ELP) are rated NONE and do not contribute to coverage. Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "sc-23",
@@ -4508,7 +5196,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 9,
+      "rationale": "6 of 6 mapped KSIs provide some evidence: KSI-IAM-APM (WEAK); KSI-IAM-ELP (WEAK); KSI-IAM-JIT (WEAK); KSI-SVC-SIN (FAIR); KSI-SVC-VCM (STRONG); KSI-SVC-VRI (WEAK). The strongest individual mapping (KSI-SVC-VCM, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. This control can be measured largely through automated technical means. Note: five of the six mapped KSIs address adjacent-but-different concerns (authentication method, access scoping, encryption, resource integrity) rather than session authenticity specifically; the collective picture is effectively carried by the single STRONG mapping, not by the volume of citations."
     },
     {
       "controlId": "sc-24",
@@ -4520,7 +5210,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "sc-28",
@@ -4532,7 +5224,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 9,
+      "rationale": "SC-28 directly matches protecting data at rest - a core match. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "sc-28.1",
@@ -4544,7 +5238,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 9,
+      "rationale": "SC-28(1) directly matches explicit encryption at rest. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "sc-39",
@@ -4556,7 +5252,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 6,
+      "rationale": "3 of 3 mapped KSIs provide some evidence: KSI-IAM-ELP (WEAK); KSI-IAM-JIT (WEAK); KSI-SVC-EIS (WEAK). No single KSI alone reaches FAIR, but the contributing KSIs independently converge on the same underlying capability (or cover distinct facets of it), which supports raising the collective assessment from WEAK to FAIR. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "sc-45.1",
@@ -4568,7 +5266,9 @@
       "core": true,
       "high": false,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "si-1",
@@ -4580,7 +5280,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "si-2",
@@ -4592,7 +5294,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 4,
+      "rationale": "SI-2(b) requires testing software/firmware updates for effectiveness and side effects before installation, a specific instance of change validation, but SI-2 as a whole covers the broader flaw-remediation lifecycle (identify/report/correct) beyond just testing. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "si-2.2",
@@ -4604,7 +5308,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 6,
+      "rationale": "Identifying missing security updates is a concrete mechanism for evaluating security-improvement opportunities. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "si-3",
@@ -4616,7 +5322,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No KSIs reflect control satisfaction."
     },
     {
       "controlId": "si-4",
@@ -4628,7 +5336,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 4,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-MLA-RVL (FAIR); KSI-SVC-EIS (WEAK). The strongest individual mapping (KSI-MLA-RVL, FAIR) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "si-4.1",
@@ -4640,7 +5350,9 @@
       "core": true,
       "high": false,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "si-4.2",
@@ -4652,7 +5364,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 9,
+      "rationale": "Near-real-time automated analysis of events directly matches a SIEM's core function. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "si-4.4",
@@ -4664,7 +5378,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 6,
+      "rationale": "3 of 3 mapped KSIs provide some evidence: KSI-MLA-LET (WEAK); KSI-MLA-OSM (WEAK); KSI-MLA-RVL (WEAK). No single KSI alone reaches FAIR, but the contributing KSIs independently converge on the same underlying capability (or cover distinct facets of it), which supports raising the collective assessment from WEAK to FAIR. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "si-4.5",
@@ -4676,7 +5392,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 3,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-INR-RIR (WEAK); KSI-MLA-LET (WEAK). The strongest individual mapping (KSI-INR-RIR, WEAK) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "si-4.10",
@@ -4688,7 +5406,9 @@
       "core": true,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "si-4.12",
@@ -4700,7 +5420,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "si-4.14",
@@ -4712,7 +5434,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "si-4.16",
@@ -4724,7 +5448,9 @@
       "core": true,
       "high": false,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "si-4.19",
@@ -4736,7 +5462,9 @@
       "core": true,
       "high": false,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "si-4.20",
@@ -4748,7 +5476,9 @@
       "core": true,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "si-4.22",
@@ -4760,7 +5490,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "si-4.23",
@@ -4772,7 +5504,9 @@
       "core": true,
       "high": false,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "si-5",
@@ -4784,7 +5518,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 6,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-SVC-ACM (WEAK); KSI-SCR-MON (STRONG). The strongest individual mapping (KSI-SCR-MON, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "si-5.1",
@@ -4796,7 +5532,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "si-6",
@@ -4808,7 +5546,9 @@
       "core": true,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "si-7",
@@ -4820,7 +5560,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 6,
+      "rationale": "SI-7 directly matches integrity-verification tooling for software/firmware - a core match. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "si-7.1",
@@ -4832,7 +5574,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 9,
+      "rationale": "3 of 3 mapped KSIs provide some evidence: KSI-SVC-VCM (STRONG); KSI-SVC-VRI (STRONG); KSI-SCR-MIT (WEAK). The strongest individual mapping (KSI-SVC-VCM, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "si-7.2",
@@ -4844,7 +5588,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "si-7.5",
@@ -4856,7 +5602,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "si-7.7",
@@ -4868,7 +5616,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 4,
+      "rationale": "3 of 3 mapped KSIs provide some evidence: KSI-MLA-EVC (WEAK); KSI-MLA-LET (WEAK); KSI-MLA-OSM (WEAK). No single KSI alone reaches FAIR, but the contributing KSIs independently converge on the same underlying capability (or cover distinct facets of it), which supports raising the collective assessment from WEAK to FAIR. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "si-7.15",
@@ -4880,7 +5630,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "si-8",
@@ -4892,7 +5644,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 6,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-CNA-RNT (WEAK); KSI-CNA-RVP (FAIR). The strongest individual mapping (KSI-CNA-RVP, FAIR) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "si-8.2",
@@ -4904,7 +5658,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 3,
+      "rationale": "This is a narrow maintenance detail (auto-updating spam signatures) and weak standalone evidence of a broader protections-effectiveness review. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "si-10",
@@ -4916,7 +5672,9 @@
       "core": true,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 1,
+      "rationale": "Of 2 KSI mapping(s) for this control, only KSI-PIY-RSD (WEAK) provides any real signal. The collective assessment matches this single contributing mapping. The remaining mapped KSI(s) (KSI-CNA-MAT) are rated NONE and do not contribute to coverage. Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "si-11",
@@ -4928,7 +5686,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 1,
+      "rationale": "Of 3 KSI mapping(s) for this control, only KSI-PIY-RSD (WEAK) provides any real signal. The collective assessment matches this single contributing mapping. The remaining mapped KSI(s) (KSI-CNA-MAT, KSI-MLA-ALA) are rated NONE and do not contribute to coverage. Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "si-12",
@@ -4940,7 +5700,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 1,
+      "rationale": "General records-retention-per-policy is tangential to backup/recovery-objective alignment specifically. Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "si-12.3",
@@ -4952,7 +5714,9 @@
       "core": false,
       "high": false,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 9,
+      "rationale": "SI-12(3) directly matches the data disposal/destruction/erasure requirement - a core match. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "si-16",
@@ -4964,7 +5728,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 3,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-CNA-MAT (WEAK); KSI-PIY-RSD (WEAK). The strongest individual mapping (KSI-CNA-MAT, WEAK) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. This control can be measured largely through automated technical means."
     },
     {
       "controlId": "si-18.4",
@@ -4976,7 +5742,9 @@
       "core": false,
       "high": false,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 4,
+      "rationale": "Covers correcting/deleting PII on individual request, a related but narrower privacy-specific request type than general agency-requested data removal. Measuring this control requires moderate additional tooling or integration but is largely automatable."
     },
     {
       "controlId": "sr-1",
@@ -4988,7 +5756,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "sr-2",
@@ -5000,7 +5770,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "sr-2.1",
@@ -5012,7 +5784,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "This is a narrow supply-chain staffing requirement; tangential to a general review of security-investment effectiveness. This control cannot be measured through automation and depends on non-automatable evidence such as documentation, personnel actions, or human judgment."
     },
     {
       "controlId": "sr-3",
@@ -5024,7 +5798,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "sr-5",
@@ -5036,7 +5812,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-SCR-MIT (STRONG); KSI-SCR-MON (WEAK). The strongest individual mapping (KSI-SCR-MIT, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. This control cannot be measured through automation and depends on non-automatable evidence such as documentation, personnel actions, or human judgment."
     },
     {
       "controlId": "sr-6",
@@ -5048,7 +5826,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": false
+      "low": false,
+      "coverage": 3,
+      "rationale": "2 of 2 mapped KSIs provide some evidence: KSI-SCR-MIT (STRONG); KSI-SCR-MON (FAIR). The strongest individual mapping (KSI-SCR-MIT, STRONG) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "sr-8",
@@ -5060,7 +5840,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "SR-8 directly matches establishing notification agreements with supply-chain entities - a core match to the 'contractual notification requirements' language. This control cannot be measured through automation and depends on non-automatable evidence such as documentation, personnel actions, or human judgment."
     },
     {
       "controlId": "sr-9",
@@ -5072,7 +5854,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "sr-9.1",
@@ -5084,7 +5868,9 @@
       "core": false,
       "high": true,
       "moderate": false,
-      "low": false
+      "low": false,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "sr-10",
@@ -5096,7 +5882,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 2,
+      "rationale": "3 of 3 mapped KSIs provide some evidence: KSI-SVC-ACM (WEAK); KSI-SVC-EIS (WEAK); KSI-SVC-VRI (FAIR). The strongest individual mapping (KSI-SVC-VRI, FAIR) already anchors the collective assessment; the remaining contributing KSI(s) reinforce or partially overlap with it but do not raise the collective picture further. Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "sr-11",
@@ -5108,7 +5896,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "sr-11.1",
@@ -5120,7 +5910,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 1,
+      "rationale": "Anti-counterfeit training is a narrow supply-chain-specific training topic not explicitly named among the KSI's listed training categories (general, role-specific, secure development, IR/DR). Automating measurement of this control is difficult; meaningful evidence likely still requires human review."
     },
     {
       "controlId": "sr-11.2",
@@ -5132,7 +5924,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     },
     {
       "controlId": "sr-12",
@@ -5144,7 +5938,9 @@
       "core": false,
       "high": true,
       "moderate": true,
-      "low": true
+      "low": true,
+      "coverage": 0,
+      "rationale": "No mapping exists between this control and any FedRAMP Key Security Indicator."
     }
   ],
   "Mapping": [
