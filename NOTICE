@@ -1,0 +1,32 @@
+LICENSING NOTICE
+================
+
+This repository contains two distinct types of content, each under a
+separate license.
+
+DATA AND ANALYSIS (CC BY 4.0)
+------------------------------
+All data files, analysis, findings, and structured content — including but
+not limited to files in any /data/, /analysis/, or /content/ directories,
+and any .json, .xml, .csv, or .yaml data files — are licensed under the
+Creative Commons Attribution 4.0 International License (CC BY 4.0).
+
+See: LICENSE-DATA
+Full text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+If you republish, incorporate, or build upon this data or analysis, you must
+provide attribution to Ruf Risk LLC. See LICENSE-DATA for the preferred
+attribution format.
+
+DISPLAY CODE (MIT)
+------------------
+All HTML and JavaScript source code used to display or visualize the data —
+including but not limited to .html, .js, and .css files — is licensed under
+the MIT License.
+
+See: LICENSE-CODE
+
+CONTACT
+-------
+Ruf Risk LLC
+Brian@RufRisk.com

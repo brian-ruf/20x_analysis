@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FedRAMP KSI ↔ 800-53 Explorer | Ruf Risk</title>
+  <style>
+    :root {
+      --navy:       #1b3a6b;
+      --navy-light: #2a4f8e;
+      --orange:     #e87722;
+      --bg:         #f4f6f9;
+      --card:       #ffffff;
+      --border:     #dde3ec;
+      --text:       #2d3748;
+      --muted:      #718096;
+      --row-hover:  #f7f9fc;
+
+      --green-text: #276749; --green-bg: #c6f6d5;
+      --yellow-text:#744210; --yellow-bg:#fefcbf;
+      --or-text:    #7b341e; --or-bg:    #fed7aa;
+      --red-text:   #742a2a; --red-bg:   #fed7d7;
+      --blue-text:  #1a365d; --blue-bg:  #bee3f8;
+      --dim-text:   #a0aec0; --dim-bg:   #edf2f7;
+
+      --radius: 6px;
+      --shadow: 0 1px 4px rgba(0,0,0,0.10);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      font-size: 14px;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--navy);
+      color: #fff;
+      padding: 14px 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    }
+    header h1 { font-size: 19px; font-weight: 700; letter-spacing: -0.2px; }
+    header p  { font-size: 12px; color: #a8bcd8; margin-top: 2px; }
+    header strong { color: var(--orange); }
+
+    /* ── Mode bar ── */
+    .mode-bar {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      display: flex;
+    }
+    .mode-btn {
+      padding: 11px 22px;
+      border: none;
+      background: none;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .mode-btn:hover  { color: var(--navy); }
+    .mode-btn.active { color: var(--navy); border-bottom-color: var(--orange); }
+
+    /* ── Filter bar ── */
+    .filter-bar {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      padding: 8px 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .filter-label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    .filter-btn {
+      padding: 3px 12px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: none;
+      font-size: 12px;
+      cursor: pointer;
+      color: var(--text);
+      transition: all 0.15s;
+    }
+    .filter-btn:hover  { border-color: var(--navy); color: var(--navy); }
+    .filter-btn.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+    .filter-sep { color: var(--border); margin: 0 4px; }
+    .core-label {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      cursor: pointer;
+      color: var(--text);
+    }
+    .core-label input { cursor: pointer; accent-color: var(--navy); }
+
+    /* ── Summary bar ── */
+    .summary-bar {
+      padding: 6px 24px;
+      font-size: 12px;
+      color: var(--muted);
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── Main ── */
+    main { padding: 16px 24px 32px; }
+
+    /* ── Groups ── */
+    .group {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 10px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .group-header {
+      padding: 11px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      user-select: none;
+      background: var(--card);
+    }
+    .group-header:hover { background: var(--row-hover); }
+    .group-title {
+      flex: 1;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .group-code { font-size: 12px; font-weight: 400; color: var(--muted); }
+    .group-count {
+      font-size: 11px;
+      color: var(--muted);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1px 8px;
+    }
+    .chevron { font-size: 11px; color: var(--muted); transition: transform 0.2s; line-height: 1; }
+    .group.collapsed .chevron { transform: rotate(-90deg); }
+    .group-body { border-top: 1px solid var(--border); }
+    .group.collapsed .group-body { display: none; }
+
+    /* ── KSI items ── */
+    .ksi-item { border-bottom: 1px solid var(--border); padding: 12px 16px; }
+    .ksi-item:last-child { border-bottom: none; }
+    .ksi-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+    .ksi-id {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 11px;
+      color: var(--muted);
+      white-space: nowrap;
+      cursor: help;
+      border-bottom: 1px dashed transparent;
+    }
+    .ksi-id:hover { border-bottom-color: #b0bec5; }
+    .ksi-title-text {
+      font-weight: 600;
+      color: var(--navy);
+      cursor: help;
+      border-bottom: 1px dashed #b0bec5;
+    }
+    .ksi-title-text:hover { border-bottom-color: var(--navy); }
+
+    /* ── Control table (Controls view) ── */
+    .ctrl-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    .ctrl-table col.c-tog   { width: 38px; }
+    .ctrl-table col.c-id    { width: 76px; }
+    .ctrl-table col.c-title { /* takes remaining width */ }
+    .ctrl-table col.c-bl    { width: 176px; }  /* High + Moderate + Low */
+    .ctrl-table col.c-core  { width: 50px; }
+    .ctrl-table col.c-score { width: 84px; }
+
+    .ctrl-row td {
+      padding: 8px 8px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+      overflow: hidden;
+    }
+    .ctrl-row:hover td { background: var(--row-hover); }
+    .ctrl-row.expanded td { background: #eef2f8; }
+
+    .ctrl-col-tog   { text-align: center; padding-left: 0 !important; padding-right: 0 !important; }
+    .ctrl-col-id    { white-space: nowrap; padding-left: 4px !important; }
+    .ctrl-col-title { }
+    .ctrl-col-bl    { white-space: nowrap; }
+    .ctrl-col-core  { text-align: center; }
+    .ctrl-col-score { text-align: right; padding-right: 12px !important; }
+
+    .ctrl-detail-row td {
+      padding: 0;
+      border-bottom: 1px solid var(--border);
+      background: #f9fafc;
+    }
+    .ctrl-detail-inner { padding: 6px 12px 10px 12px; }
+
+    .control-id {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--orange);
+      white-space: nowrap;
+      cursor: help;
+      border-bottom: 1px dashed transparent;
+    }
+    .control-id:hover { border-bottom-color: var(--orange); }
+    .control-title-text {
+      font-weight: 600;
+      color: var(--navy);
+      cursor: help;
+      border-bottom: 1px dashed #b0bec5;
+    }
+    .control-title-text:hover { border-bottom-color: var(--navy); }
+
+    .bl-badges { display: inline-flex; gap: 4px; }
+
+    .ksi-toggle {
+      width: 20px;
+      height: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      color: var(--muted);
+      cursor: pointer;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0;
+      background: none;
+      transition: color 0.15s, border-color 0.15s, background 0.15s;
+    }
+    .ksi-toggle:hover { color: var(--navy); border-color: var(--navy); background: #e8edf5; }
+
+    /* ── Mapping sub-table (KSI view + ctrl detail) ── */
+    .mapping-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      table-layout: fixed;
+    }
+    .mapping-table th {
+      text-align: left;
+      padding: 4px 10px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      font-weight: 600;
+      background: #f1f4f9;
+    }
+    .mapping-table td { padding: 6px 10px; border-bottom: 1px solid #edf0f5; vertical-align: middle; }
+    .mapping-table tr:last-child td { border-bottom: none; }
+    .mapping-table tbody tr:hover td { background: var(--row-hover); }
+
+    .col-id    { width: 110px; }
+    .col-title { }
+    .col-badge { width: 90px; }
+
+    .no-mappings { font-size: 12px; color: var(--muted); font-style: italic; padding: 2px 0; }
+
+    /* ── Badges ── */
+    .badge {
+      display: inline-block;
+      padding: 2px 9px;
+      border-radius: 11px;
+      font-size: 11px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .badge.tip { cursor: help; }
+
+    .b-strong    { background: var(--green-bg);  color: var(--green-text); }
+    .b-fair      { background: var(--yellow-bg); color: var(--yellow-text); }
+    .b-weak      { background: var(--or-bg);     color: var(--or-text); }
+    .b-none      { background: var(--red-bg);    color: var(--red-text); }
+    .b-simple    { background: var(--green-bg);  color: var(--green-text); }
+    .b-complex   { background: var(--or-bg);     color: var(--or-text); }
+    .b-excellent  { background: var(--blue-bg);   color: var(--blue-text); }
+    .b-exc-good   { background: #b2dfdb;          color: #00695c; }   /* teal — between blue & green */
+    .b-good       { background: var(--green-bg);  color: var(--green-text); }
+    .b-good-fair  { background: #dcedc8;          color: #558b2f; }   /* light green — between green & yellow */
+    .b-poor       { background: var(--or-bg);     color: var(--or-text); }
+
+    .b-high     { background: #111; color: #fff; }
+    .b-moderate { background: #111; color: #fff; }
+    .b-low      { background: #111; color: #fff; }
+    .b-core     { background: var(--navy); color: #fff; }
+    .b-dim      { background: var(--dim-bg); color: var(--dim-text); }
+
+    /* ── Inline cell title/id (inside table) ── */
+    .cell-id {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .cell-ksi-title, .cell-ctrl-title {
+      color: var(--navy);
+      border-bottom: 1px dashed #b0bec5;
+    }
+
+    /* nav-link: clickable cross-view navigation (also carries data-tip) */
+    .nav-link {
+      cursor: pointer;
+      transition: color 0.12s, border-color 0.12s;
+    }
+    .nav-link:hover { color: var(--orange); border-bottom-color: var(--orange); }
+    /* tooltip-only items that are not nav links */
+    .tip-only { cursor: help; }
+    .tip-only:hover { border-bottom-color: var(--navy); }
+
+    /* flash highlight when scrolled-to via cross-view link */
+    @keyframes target-flash {
+      0%   { background: #fff3cd; }
+      100% { background: transparent; }
+    }
+    .highlight-target { animation: target-flash 1.4s ease-out forwards; }
+
+    /* ── Tooltip ── */
+    #tooltip {
+      position: fixed;
+      z-index: 9000;
+      max-width: 380px;
+      max-height: 240px;
+      overflow-y: auto;
+      background: #1a202c;
+      color: #e2e8f0;
+      font-size: 12px;
+      line-height: 1.55;
+      padding: 10px 14px;
+      border-radius: 6px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+      pointer-events: none;
+      display: none;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    /* ── Loading / error ── */
+    #loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 280px;
+      gap: 14px;
+      color: var(--muted);
+    }
+    .spinner {
+      width: 30px; height: 30px;
+      border: 3px solid var(--border);
+      border-top-color: var(--navy);
+      border-radius: 50%;
+      animation: spin 0.75s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    #error-msg {
+      margin: 24px;
+      padding: 16px 20px;
+      background: #fff5f5;
+      border: 1px solid #feb2b2;
+      border-radius: var(--radius);
+      color: #c53030;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>FedRAMP KSI &harr; 800-53 Explorer</h1>
+  <p><strong>Ruf Risk LLC</strong> &mdash; Key Security Indicators mapped to NIST SP 800-53 Rev 5</p>
+</header>
+
+<div id="loading">
+  <div class="spinner"></div>
+  <div>Loading dataset&hellip;</div>
+</div>
+<div id="error-msg" style="display:none"></div>
+
+<div id="app" style="display:none">
+
+  <div class="mode-bar">
+    <button class="mode-btn active" id="btn-controls" onclick="setMode('controls')">By Controls</button>
+    <button class="mode-btn"        id="btn-ksi"      onclick="setMode('ksi')">By KSI</button>
+  </div>
+
+  <div id="filter-bar" class="filter-bar" style="display:none">
+    <span class="filter-label">Baseline</span>
+    <button class="filter-btn active" data-bl="all"      onclick="setBaseline(this)">All</button>
+    <button class="filter-btn"        data-bl="high"     onclick="setBaseline(this)">High</button>
+    <button class="filter-btn"        data-bl="moderate" onclick="setBaseline(this)">Moderate</button>
+    <button class="filter-btn"        data-bl="low"      onclick="setBaseline(this)">Low</button>
+    <button class="filter-btn"        data-bl="none"     onclick="setBaseline(this)">No Baseline</button>
+    <span class="filter-sep">&nbsp;|&nbsp;</span>
+    <label class="core-label">
+      <input type="checkbox" id="core-only" onchange="renderControls()">
+      Core controls only
+    </label>
+  </div>
+
+  <div class="summary-bar" id="summary-bar"></div>
+
+  <main>
+    <div id="view-ksi"></div>
+    <div id="view-controls" style="display:none"></div>
+  </main>
+</div>
+
+<div id="tooltip"></div>
+
+<script>
+'use strict';
+
+const DATA_URL_LIVE   = 'https://rufrisk.com/wp-content/uploads/2026/08/fedramp_ksi_800-53_dataset.json';
+const DATA_SCRIPT_LOCAL = './data/fedramp_ksi_800-53_dataset.js';
+
+/** @type {{ KSIs: object[], Rev5_controls: object[], Mapping: object[], ksiMap: object, controlMap: object, mappingsByKsi: object, mappingsByControl: object }|null} */
+let DB = null;
+let currentMode     = 'controls';
+let currentBaseline = 'all';
+let dataSource      = 'live';  // 'live' or 'local'
+
+// ─── Data loading ────────────────────────────────────────────────────────────
+
+async function fetchJSON(url) {
+  const resp = await fetch(url);
+  if (!resp.ok) throw new Error(`HTTP ${resp.status} – ${resp.statusText}`);
+  return resp.json();
+}
+
+/** Load local data via <script> tag — bypasses CORS restrictions on file:// origins. */
+function loadViaScriptTag(src) {
+  return new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = src;
+    script.onload = () => {
+      if (window.__FRR_DATA) {
+        const data = window.__FRR_DATA;
+        delete window.__FRR_DATA;
+        resolve(data);
+      } else {
+        reject(new Error('Script loaded but window.__FRR_DATA was not set'));
+      }
+    };
+    script.onerror = () => reject(new Error(`Could not load ${src}`));
+    document.head.appendChild(script);
+  });
+}
+
+async function loadData() {
+  let raw = null;
+  let source = '';
+  try {
+    raw    = await fetchJSON(DATA_URL_LIVE);
+    source = 'live';
+  } catch (_) {
+    // fetch() blocked (CORS or no network) — inject local script tag instead,
+    // which works even under file:// because <script src> is not CORS-restricted.
+    try {
+      raw    = await loadViaScriptTag(DATA_SCRIPT_LOCAL);
+      source = 'local';
+    } catch (err) {
+      document.getElementById('loading').style.display = 'none';
+      const el = document.getElementById('error-msg');
+      el.style.display = 'block';
+      el.textContent   = `Failed to load data from live URL and local fallback: ${err.message}`;
+      return;
+    }
+  }
+  DB = buildIndex(raw);
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('app').style.display     = 'block';
+  dataSource = source;
+  if (source === 'local') {
+    const bar = document.getElementById('summary-bar');
+    bar.style.background = '#fffbeb';
+    bar.style.color = '#92400e';
+  }
+  setMode('controls');
+  setTimeout(handleInitialHash, 0);
+}
+
+function buildIndex(raw) {
+  const ksiMap = Object.fromEntries(raw.KSIs.map(k => [k.ksiId, k]));
+  const controlMap = Object.fromEntries(raw.Rev5_controls.map(c => [c.controlId, c]));
+
+  const mappingsByKsi     = {};
+  const mappingsByControl = {};
+  for (const m of raw.Mapping) {
+    (mappingsByKsi[m.ksiId]         ??= []).push(m);
+    (mappingsByControl[m.controlId] ??= []).push(m);
+  }
+  return { ...raw, ksiMap, controlMap, mappingsByKsi, mappingsByControl };
+}
+
+// ─── Mode & filter ───────────────────────────────────────────────────────────
+
+function setMode(mode) {
+  currentMode = mode;
+  document.getElementById('btn-ksi').classList.toggle('active',      mode === 'ksi');
+  document.getElementById('btn-controls').classList.toggle('active', mode === 'controls');
+  document.getElementById('view-ksi').style.display      = mode === 'ksi'      ? 'block' : 'none';
+  document.getElementById('view-controls').style.display = mode === 'controls' ? 'block' : 'none';
+  document.getElementById('filter-bar').style.display    = mode === 'controls' ? 'flex'  : 'none';
+  if (mode === 'ksi') renderKSIs(); else renderControls();
+}
+
+function setBaseline(btn) {
+  currentBaseline = btn.dataset.bl;
+  document.querySelectorAll('#filter-bar .filter-btn').forEach(b =>
+    b.classList.toggle('active', b === btn)
+  );
+  renderControls();
+}
+
+// ─── KSI view ────────────────────────────────────────────────────────────────
+
+function renderKSIs() {
+  const groups = new Map();
+  for (const ksi of DB.KSIs) {
+    if (!groups.has(ksi.ksiGroupCode)) {
+      groups.set(ksi.ksiGroupCode, { ksiGroup: ksi.ksiGroup, items: [] });
+    }
+    groups.get(ksi.ksiGroupCode).items.push(ksi);
+  }
+
+  const localNote = dataSource === 'local' ? '⚠ Local file · ' : '';
+  document.getElementById('summary-bar').textContent =
+    `${localNote}${DB.KSIs.length} KSIs across ${groups.size} groups · ${DB.Mapping.length} total control mappings`;
+
+  const container = document.getElementById('view-ksi');
+  container.innerHTML = '';
+
+  for (const [code, grp] of groups) {
+    container.appendChild(buildGroup(
+      `${esc(grp.ksiGroup)} <span class="group-code">(${esc(code)})</span>`,
+      `${grp.items.length} KSIs`,
+      grp.items.map(buildKSIItem).join('')
+    ));
+  }
+
+  wireTooltips(container);
+}
+
+function buildKSIItem(ksi) {
+  const mappings = DB.mappingsByKsi[ksi.ksiId] ?? [];
+
+  const rows = mappings.map(m => {
+    const ctrl = DB.controlMap[m.controlId];
+    if (!ctrl) return '';
+    const cid = escAttr(ctrl.controlId);
+    return `<tr>
+      <td class="col-id"><span class="cell-id nav-link" data-tip="${escAttr(ctrl.statement)}" onclick="goToControl('${cid}')">${esc(ctrl.displayId)}</span></td>
+      <td><span class="cell-ctrl-title nav-link" data-tip="${escAttr(ctrl.statement)}" onclick="goToControl('${cid}')">${esc(ctrl.title)}</span></td>
+      <td class="col-badge">${strengthBadge(m.strength, m.rationale)}</td>
+      <td class="col-badge">${automatableBadge(m.automatable, m.prerequisites)}</td>
+      <td class="col-badge">${scoreBadge(m.score)}</td>
+    </tr>`;
+  }).join('');
+
+  const body = mappings.length
+    ? `<table class="mapping-table">
+        <thead><tr>
+          <th class="col-id">Control</th>
+          <th>Title</th>
+          <th class="col-badge">Strength</th>
+          <th class="col-badge">Automatable</th>
+          <th class="col-badge">Score</th>
+        </tr></thead>
+        <tbody>${rows}</tbody>
+       </table>`
+    : `<div class="no-mappings">No control mappings</div>`;
+
+  return `<div class="ksi-item" id="ksi-${escAttr(ksi.ksiId)}">
+    <div class="ksi-header">
+      <span class="ksi-id tip-only" data-tip="${escAttr(ksi.ksiStatement)}">${esc(ksi.ksiId)}</span>
+      <span class="ksi-title-text tip-only" data-tip="${escAttr(ksi.ksiStatement)}">${esc(ksi.ksiTitle)}</span>
+    </div>
+    ${body}
+  </div>`;
+}
+
+// ─── Controls view ───────────────────────────────────────────────────────────
+
+function renderControls() {
+  const coreOnly = document.getElementById('core-only').checked;
+
+  const filtered = DB.Rev5_controls.filter(c => {
+    if (coreOnly && !c.core) return false;
+    switch (currentBaseline) {
+      case 'high':     return c.high;
+      case 'moderate': return c.moderate;
+      case 'low':      return c.low;
+      case 'none':     return !c.high && !c.moderate && !c.low;
+      default:         return true;
+    }
+  });
+
+  const families = new Map();
+  for (const c of filtered) {
+    if (!families.has(c.family)) {
+      families.set(c.family, { familyTitle: c.familyTitle, items: [] });
+    }
+    families.get(c.family).items.push(c);
+  }
+
+  const mappedCount = filtered.filter(c => (DB.mappingsByControl[c.controlId]?.length ?? 0) > 0).length;
+  const localNote2 = dataSource === 'local' ? '⚠ Local file · ' : '';
+  document.getElementById('summary-bar').textContent =
+    `${localNote2}${filtered.length} controls across ${families.size} families · ${mappedCount} have KSI mappings`;
+
+  const container = document.getElementById('view-controls');
+  container.innerHTML = '';
+
+  const sorted = [...families.entries()].sort(([a], [b]) => a.localeCompare(b));
+  for (const [family, fam] of sorted) {
+    const avgBadge = familyAvgScoreBadge(fam.items);
+    container.appendChild(buildGroup(
+      `${esc(fam.familyTitle)} <span class="group-code">(${esc(family)})</span>`,
+      `${fam.items.length} controls`,
+      buildControlFamily(fam.items),
+      true,       // start collapsed
+      avgBadge
+    ));
+  }
+
+  wireTooltips(container);
+}
+
+function buildControlFamily(items) {
+  const colgroup = `<colgroup>
+    <col class="c-tog"><col class="c-id"><col class="c-title">
+    <col class="c-bl"><col class="c-core"><col class="c-score">
+  </colgroup>`;
+  return `<table class="ctrl-table">${colgroup}<tbody>${items.map(buildControlItem).join('')}</tbody></table>`;
+}
+
+function buildControlItem(ctrl) {
+  const mappings = DB.mappingsByControl[ctrl.controlId] ?? [];
+  const toggleId = `kd-${ctrl.controlId.replace(/[^a-z0-9]/gi, '-')}`;
+
+  const toggleCell = mappings.length
+    ? `<td class="ctrl-col-tog"><button class="ksi-toggle" onclick="toggleKsiDetail(this,'${toggleId}')"><span class="tog-chevron">&#9654;</span></button></td>`
+    : `<td class="ctrl-col-tog"></td>`;
+
+  const baselineBadges = `<div class="bl-badges">
+    ${ctrl.high     ? '<span class="badge b-high">High</span>'         : '<span class="badge b-dim">High</span>'}
+    ${ctrl.moderate ? '<span class="badge b-moderate">Moderate</span>' : '<span class="badge b-dim">Moderate</span>'}
+    ${ctrl.low      ? '<span class="badge b-low">Low</span>'           : '<span class="badge b-dim">Low</span>'}
+  </div>`;
+
+  const coreCell = `<td class="ctrl-col-core">${ctrl.core ? '<span class="badge b-core">Core</span>' : ''}</td>`;
+
+  const maxScore = mappings.length ? Math.max(...mappings.map(m => m.score)) : null;
+  const scoreCell = `<td class="ctrl-col-score">${maxScore !== null ? scoreBadge(maxScore) : '<span class="badge b-none">None</span>'}</td>`;
+
+  const mappingRows = mappings.map(m => {
+    const ksi = DB.ksiMap[m.ksiId];
+    if (!ksi) return '';
+    const kid = escAttr(ksi.ksiId);
+    return `<tr>
+      <td class="col-id"><span class="cell-id nav-link" data-tip="${escAttr(ksi.ksiStatement)}" onclick="goToKSI('${kid}')">${esc(ksi.ksiId)}</span></td>
+      <td><span class="cell-ksi-title nav-link" data-tip="${escAttr(ksi.ksiStatement)}" onclick="goToKSI('${kid}')">${esc(ksi.ksiTitle)}</span></td>
+      <td class="col-badge">${strengthBadge(m.strength, m.rationale)}</td>
+      <td class="col-badge">${automatableBadge(m.automatable, m.prerequisites)}</td>
+      <td class="col-badge">${scoreBadge(m.score)}</td>
+    </tr>`;
+  }).join('');
+
+  const detailRow = mappings.length
+    ? `<tr class="ctrl-detail-row" id="${toggleId}" style="display:none">
+        <td></td>
+        <td colspan="5"><div class="ctrl-detail-inner">
+          <table class="mapping-table">
+            <thead><tr>
+              <th class="col-id">KSI</th>
+              <th>KSI Title</th>
+              <th class="col-badge">Strength</th>
+              <th class="col-badge">Automatable</th>
+              <th class="col-badge">Score</th>
+            </tr></thead>
+            <tbody>${mappingRows}</tbody>
+          </table>
+        </div></td>
+      </tr>`
+    : '';
+
+  return `<tr class="ctrl-row" id="ctrl-${escAttr(ctrl.controlId)}" data-detail="${mappings.length ? toggleId : ''}">
+    ${toggleCell}
+    <td class="ctrl-col-id"><span class="control-id tip-only" data-tip="${escAttr(ctrl.statement)}">${esc(ctrl.displayId)}</span></td>
+    <td class="ctrl-col-title"><span class="control-title-text tip-only" data-tip="${escAttr(ctrl.statement)}">${esc(ctrl.title)}</span></td>
+    <td class="ctrl-col-bl">${baselineBadges}</td>
+    ${coreCell}
+    ${scoreCell}
+  </tr>${detailRow}`;
+}
+
+// ─── Cross-view navigation ────────────────────────────────────────────────────
+
+function goToControl(controlId) {
+  // Reset baseline filter to All
+  currentBaseline = 'all';
+  document.querySelectorAll('#filter-bar .filter-btn').forEach(b =>
+    b.classList.toggle('active', b.dataset.bl === 'all')
+  );
+  setMode('controls');
+  setTimeout(() => {
+    const anchor = 'ctrl-' + controlId;
+    const el = expandToAnchor(anchor);
+    if (el) {
+      history.replaceState(null, '', '#' + anchor);
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      flashHighlight(el);
+    }
+  }, 0);
+}
+
+function goToKSI(ksiId) {
+  setMode('ksi');
+  setTimeout(() => {
+    const anchor = 'ksi-' + ksiId;
+    const el = expandToAnchor(anchor);
+    if (el) {
+      history.replaceState(null, '', '#' + anchor);
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      flashHighlight(el);
+    }
+  }, 0);
+}
+
+/** Expands any collapsed ancestor group so the element is visible, then returns it. */
+function expandToAnchor(id) {
+  const el = document.getElementById(id);
+  if (!el) return null;
+  const group = el.closest('.group');
+  if (group?.classList.contains('collapsed')) group.classList.remove('collapsed');
+  return el;
+}
+
+function flashHighlight(el) {
+  el.classList.remove('highlight-target');
+  // force reflow so removing+re-adding restarts the animation
+  void el.offsetWidth;
+  el.classList.add('highlight-target');
+}
+
+/** On initial page load, navigate to the URI fragment if present. */
+function handleInitialHash() {
+  const hash = location.hash.slice(1);
+  if (!hash) return;
+
+  if (hash.startsWith('ksi-')) {
+    // Switch to KSI view (re-renders), then expand the containing group and scroll.
+    setMode('ksi');
+    setTimeout(() => {
+      const el = expandToAnchor(hash);
+      if (!el) return;
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      flashHighlight(el);
+    }, 0);
+
+  } else if (hash.startsWith('ctrl-')) {
+    // Already in controls view; expand the family group, open the KSI detail, and scroll.
+    const el = expandToAnchor(hash);
+    if (!el) return;
+    // Open the KSI detail toggle for this control if it has mappings.
+    const detailId  = el.dataset.detail;
+    const detailRow = detailId ? document.getElementById(detailId) : null;
+    const toggleBtn = detailRow ? el.querySelector('.ksi-toggle') : null;
+    if (detailRow && toggleBtn && detailRow.style.display === 'none') {
+      toggleKsiDetail(toggleBtn, detailId);
+    }
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    flashHighlight(el);
+  }
+}
+
+function toggleKsiDetail(btn, id) {
+  const detailRow = document.getElementById(id);
+  const chevron   = btn.querySelector('.tog-chevron');
+  const opening   = detailRow.style.display === 'none';
+  detailRow.style.display = opening ? '' : 'none';
+  chevron.innerHTML = opening ? '&#9660;' : '&#9654;';
+  btn.closest('tr').classList.toggle('expanded', opening);
+}
+
+// ─── Group builder ────────────────────────────────────────────────────────────
+
+function buildGroup(titleHtml, countText, bodyHtml, startCollapsed = false, metaHtml = '') {
+  const div = document.createElement('div');
+  div.className = 'group' + (startCollapsed ? ' collapsed' : '');
+  div.innerHTML = `
+    <div class="group-header" onclick="toggleGroup(this)">
+      <span class="group-title">${titleHtml}</span>
+      ${metaHtml}
+      <span class="group-count">${esc(countText)}</span>
+      <span class="chevron">&#9660;</span>
+    </div>
+    <div class="group-body">${bodyHtml}</div>`;
+  return div;
+}
+
+function toggleGroup(header) {
+  header.parentElement.classList.toggle('collapsed');
+}
+
+// ─── Family average score ────────────────────────────────────────────────────
+
+function familyAvgScoreBadge(controls) {
+  // Each control contributes its highest mapping score, or 0 if unmapped.
+  const scores = controls.map(c => {
+    const ms = DB.mappingsByControl[c.controlId] ?? [];
+    return ms.length ? Math.max(...ms.map(m => m.score)) : 0;
+  });
+  const avg = scores.reduce((a, b) => a + b, 0) / scores.length;
+
+  let label, cls;
+  if      (avg >= 8.8)  { label = 'Excellent';      cls = 'b-excellent'; }
+  else if (avg >= 6.5)  { label = 'Excellent/Good'; cls = 'b-exc-good';  }
+  else if (avg >= 5.8)  { label = 'Good';           cls = 'b-good';      }
+  else if (avg >= 4.2)  { label = 'Good/Fair';      cls = 'b-good-fair'; }
+  else if (avg >= 3.5)  { label = 'Fair';           cls = 'b-fair';      }
+  else if (avg >= 0.4)  { label = 'Poor';           cls = 'b-poor';      }
+  else                   { label = 'No KSI Coverage'; cls = 'b-none';    }
+
+  return `<span class="badge ${cls}" title="Avg score: ${avg.toFixed(2)}">${label}</span>`;
+}
+
+// ─── Badges ───────────────────────────────────────────────────────────────────
+
+function strengthBadge(val, rationale) {
+  const map = { 3: ['Strong', 'b-strong'], 2: ['Fair', 'b-fair'], 1: ['Weak', 'b-weak'], 0: ['None', 'b-none'] };
+  const [label, cls] = map[val] ?? ['?', 'b-dim'];
+  const tip = rationale ? ` data-tip="${escAttr(rationale)}"` : '';
+  return `<span class="badge ${cls}${tip ? ' tip' : ''}"${tip}>${label}</span>`;
+}
+
+function automatableBadge(val, prerequisites) {
+  const map = { 3: ['Simple', 'b-simple'], 2: ['Fair', 'b-fair'], 1: ['Complex', 'b-complex'], 0: ['None', 'b-none'] };
+  const [label, cls] = map[val] ?? ['?', 'b-dim'];
+  const tip = prerequisites ? ` data-tip="${escAttr(prerequisites)}"` : '';
+  return `<span class="badge ${cls}${tip ? ' tip' : ''}"${tip}>${label}</span>`;
+}
+
+function scoreBadge(val) {
+  let label, cls;
+  if      (val === 9)      { label = 'Excellent'; cls = 'b-excellent'; }
+  else if (val === 6)      { label = 'Good';      cls = 'b-good'; }
+  else if (val === 4)      { label = 'Fair';      cls = 'b-fair'; }
+  else if (val > 0)        { label = 'Poor';      cls = 'b-poor'; }
+  else                     { label = 'None';      cls = 'b-none'; }
+  return `<span class="badge ${cls}">${label}</span>`;
+}
+
+// ─── Tooltip ─────────────────────────────────────────────────────────────────
+
+const tipEl = document.getElementById('tooltip');
+
+function wireTooltips(root) {
+  root.querySelectorAll('[data-tip]').forEach(el => {
+    el.addEventListener('mouseenter', onTipEnter);
+    el.addEventListener('mousemove',  onTipMove);
+    el.addEventListener('mouseleave', onTipLeave);
+  });
+}
+
+function onTipEnter(e) {
+  const text = e.currentTarget.dataset.tip;
+  if (!text) return;
+  tipEl.textContent  = text;
+  tipEl.style.display = 'block';
+  placeTip(e.clientX, e.clientY);
+}
+function onTipMove(e)  { placeTip(e.clientX, e.clientY); }
+function onTipLeave()  { tipEl.style.display = 'none'; }
+
+function placeTip(cx, cy) {
+  const gap = 16;
+  const tw  = tipEl.offsetWidth;
+  const th  = tipEl.offsetHeight;
+  let x = cx + gap;
+  let y = cy + gap;
+  if (x + tw > window.innerWidth  - 6) x = cx - tw - gap;
+  if (y + th > window.innerHeight - 6) y = cy - th - gap;
+  tipEl.style.left = `${Math.max(4, x)}px`;
+  tipEl.style.top  = `${Math.max(4, y)}px`;
+}
+
+// ─── Escaping ─────────────────────────────────────────────────────────────────
+
+function esc(s) {
+  return String(s ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+function escAttr(s) {
+  return String(s ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+// ─── Boot ────────────────────────────────────────────────────────────────────
+
+loadData();
+</script>
+</body>
+</html>
