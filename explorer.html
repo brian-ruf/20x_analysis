@@ -425,71 +425,29 @@
 <script>
 'use strict';
 
-const DATA_URL_LIVE   = 'https://rufrisk.com/wp-content/uploads/2026/08/fedramp_ksi_800-53_dataset.json';
-const DATA_SCRIPT_LOCAL = './data/fedramp_ksi_800-53_dataset.js';
+const DATA_URL = 'https://raw.githubusercontent.com/brian-ruf/20x_analysis/refs/heads/main/data/fedramp_ksi_800-53_dataset.json';
 
 /** @type {{ KSIs: object[], Rev5_controls: object[], Mapping: object[], ksiMap: object, controlMap: object, mappingsByKsi: object, mappingsByControl: object }|null} */
 let DB = null;
 let currentMode     = 'controls';
 let currentBaseline = 'all';
-let dataSource      = 'live';  // 'live' or 'local'
 
 // ─── Data loading ────────────────────────────────────────────────────────────
 
-async function fetchJSON(url) {
-  const resp = await fetch(url);
-  if (!resp.ok) throw new Error(`HTTP ${resp.status} – ${resp.statusText}`);
-  return resp.json();
-}
-
-/** Load local data via <script> tag — bypasses CORS restrictions on file:// origins. */
-function loadViaScriptTag(src) {
-  return new Promise((resolve, reject) => {
-    const script = document.createElement('script');
-    script.src = src;
-    script.onload = () => {
-      if (window.__FRR_DATA) {
-        const data = window.__FRR_DATA;
-        delete window.__FRR_DATA;
-        resolve(data);
-      } else {
-        reject(new Error('Script loaded but window.__FRR_DATA was not set'));
-      }
-    };
-    script.onerror = () => reject(new Error(`Could not load ${src}`));
-    document.head.appendChild(script);
-  });
-}
-
 async function loadData() {
-  let raw = null;
-  let source = '';
   try {
-    raw    = await fetchJSON(DATA_URL_LIVE);
-    source = 'live';
-  } catch (_) {
-    // fetch() blocked (CORS or no network) — inject local script tag instead,
-    // which works even under file:// because <script src> is not CORS-restricted.
-    try {
-      raw    = await loadViaScriptTag(DATA_SCRIPT_LOCAL);
-      source = 'local';
-    } catch (err) {
-      document.getElementById('loading').style.display = 'none';
-      const el = document.getElementById('error-msg');
-      el.style.display = 'block';
-      el.textContent   = `Failed to load data from live URL and local fallback: ${err.message}`;
-      return;
-    }
+    const resp = await fetch(DATA_URL);
+    if (!resp.ok) throw new Error(`HTTP ${resp.status} – ${resp.statusText}`);
+    DB = buildIndex(await resp.json());
+  } catch (err) {
+    document.getElementById('loading').style.display = 'none';
+    const el = document.getElementById('error-msg');
+    el.style.display = 'block';
+    el.textContent   = `Failed to load data: ${err.message}`;
+    return;
   }
-  DB = buildIndex(raw);
   document.getElementById('loading').style.display = 'none';
   document.getElementById('app').style.display     = 'block';
-  dataSource = source;
-  if (source === 'local') {
-    const bar = document.getElementById('summary-bar');
-    bar.style.background = '#fffbeb';
-    bar.style.color = '#92400e';
-  }
   setMode('controls');
   setTimeout(handleInitialHash, 0);
 }
@@ -538,9 +496,8 @@ function renderKSIs() {
     groups.get(ksi.ksiGroupCode).items.push(ksi);
   }
 
-  const localNote = dataSource === 'local' ? '⚠ Local file · ' : '';
   document.getElementById('summary-bar').textContent =
-    `${localNote}${DB.KSIs.length} KSIs across ${groups.size} groups · ${DB.Mapping.length} total control mappings`;
+    `${DB.KSIs.length} KSIs across ${groups.size} groups · ${DB.Mapping.length} total control mappings`;
 
   const container = document.getElementById('view-ksi');
   container.innerHTML = '';
@@ -619,9 +576,8 @@ function renderControls() {
   }
 
   const mappedCount = filtered.filter(c => (DB.mappingsByControl[c.controlId]?.length ?? 0) > 0).length;
-  const localNote2 = dataSource === 'local' ? '⚠ Local file · ' : '';
   document.getElementById('summary-bar').textContent =
-    `${localNote2}${filtered.length} controls across ${families.size} families · ${mappedCount} have KSI mappings`;
+    `${filtered.length} controls across ${families.size} families · ${mappedCount} have KSI mappings`;
 
   const container = document.getElementById('view-controls');
   container.innerHTML = '';
