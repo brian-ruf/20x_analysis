@@ -688,8 +688,7 @@ function buildControlItem(ctrl) {
 
   const coreTag = ctrl.core ? '<span class="badge b-core">C</span>' : '';
 
-  const maxScore = mappings.length ? Math.max(...mappings.map(m => m.score)) : null;
-  const scoreCell = `<td class="ctrl-col-score">${maxScore !== null ? scoreBadge(maxScore) : '<span class="badge b-none">None</span>'}</td>`;
+  const scoreCell = `<td class="ctrl-col-score">${scoreBadge(ctrl.coverage ?? 0, ctrl.rationale ?? '')}</td>`;
 
   const mappingRows = mappings.map(m => {
     const ksi = DB.ksiMap[m.ksiId];
@@ -835,11 +834,7 @@ function toggleGroup(header) {
 // ─── Family average score ────────────────────────────────────────────────────
 
 function familyAvgScoreBadge(controls) {
-  // Each control contributes its highest mapping score, or 0 if unmapped.
-  const scores = controls.map(c => {
-    const ms = DB.mappingsByControl[c.controlId] ?? [];
-    return ms.length ? Math.max(...ms.map(m => m.score)) : 0;
-  });
+  const scores = controls.map(c => c.coverage ?? 0);
   const avg = scores.reduce((a, b) => a + b, 0) / scores.length;
 
   let label, cls;
@@ -870,14 +865,15 @@ function automatableBadge(val, prerequisites) {
   return `<span class="badge ${cls}${tip ? ' tip' : ''}"${tip}>${label}</span>`;
 }
 
-function scoreBadge(val) {
+function scoreBadge(val, tip = '') {
   let label, cls;
   if      (val === 9)      { label = 'Excellent'; cls = 'b-excellent'; }
   else if (val === 6)      { label = 'Good';      cls = 'b-good'; }
   else if (val === 4)      { label = 'Fair';      cls = 'b-fair'; }
   else if (val > 0)        { label = 'Poor';      cls = 'b-poor'; }
   else                     { label = 'None';      cls = 'b-none'; }
-  return `<span class="badge ${cls}">${label}</span>`;
+  const tipAttr = tip ? ` data-tip="${escAttr(tip)}"` : '';
+  return `<span class="badge ${cls}${tip ? ' tip' : ''}"${tipAttr}>${label}</span>`;
 }
 
 // ─── Tooltip ─────────────────────────────────────────────────────────────────
