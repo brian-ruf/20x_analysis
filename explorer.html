@@ -154,7 +154,8 @@
       font-weight: 700;
       color: var(--navy);
     }
-    .group-code { font-size: 12px; font-weight: 400; color: var(--navy); }
+    .group-code      { font-size: 12px; font-weight: 400; color: var(--navy); }
+    .group-qualifier { font-size: 12px; font-weight: 400; color: var(--navy); }
     .group-count {
       font-size: 11px;
       color: var(--navy);
@@ -192,9 +193,8 @@
     /* ── Control table (Controls view) ── */
     .ctrl-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
     .ctrl-table col.c-tog   { width: 38px; }
-    .ctrl-table col.c-id    { width: 76px; }
+    .ctrl-table col.c-id    { width: 86px; }
     .ctrl-table col.c-title { /* takes remaining width */ }
-    .ctrl-table col.c-core  { width: 50px; }
     .ctrl-table col.c-score { width: 84px; }
 
     .ctrl-row td {
@@ -209,7 +209,6 @@
     .ctrl-col-tog   { text-align: center; padding-left: 0 !important; padding-right: 0 !important; }
     .ctrl-col-id    { white-space: nowrap; padding-left: 4px !important; }
     .ctrl-col-title { }
-    .ctrl-col-core  { text-align: center; }
     .ctrl-col-score { text-align: right; padding-right: 12px !important; }
 
     .ctrl-detail-row td {
@@ -238,10 +237,6 @@
     .control-title-text:hover { border-bottom-color: var(--navy); }
 
     /* compact inline H / M / L indicators in the title cell */
-    .bl-inline { display: inline-flex; gap: 2px; margin-left: 7px; vertical-align: middle; }
-    .bl-tag { font-family: 'Lucida Console', 'Courier New', Courier, monospace; font-size: 9px; font-weight: 700; padding: 1px 3px; border-radius: 2px; line-height: 1.4; }
-    .bl-on  { background: #050203; color: #fff; }
-    .bl-off { color: #ccc9c3; }
 
     .ksi-toggle {
       width: 20px;
@@ -260,31 +255,23 @@
     }
     .ksi-toggle:hover { color: var(--navy); border-color: var(--navy); background: #e8edf5; }
 
-    /* ── Mapping sub-table (KSI view + ctrl detail) ── */
-    .mapping-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-      table-layout: fixed;
+    /* ── Mapping rows (KSI view + ctrl detail) — flex, reflows on narrow screens ── */
+    .map-rows { font-size: 13px; }
+    .map-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 4px 10px;
+      padding: 6px 10px;
+      border-bottom: 1px solid #dcdbd7;
     }
-    .mapping-table th {
-      text-align: left;
-      padding: 4px 10px;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--navy);   /* 8.7:1 on #dcdbd7, WCAG AA */
-      border-bottom: 1px solid var(--border);
-      font-weight: 600;
-      background: #dcdbd7;
-    }
-    .mapping-table td { padding: 6px 10px; border-bottom: 1px solid #dcdbd7; vertical-align: middle; }
-    .mapping-table tr:last-child td { border-bottom: none; }
-    .mapping-table tbody tr:hover td { background: var(--row-hover); }
-
-    .col-id    { width: 110px; }
-    .col-title { }
-    .col-badge { width: 90px; }
+    .map-row:last-child { border-bottom: none; }
+    .map-row:hover { background: var(--row-hover); }
+    .map-row .cell-id    { flex-shrink: 0; }
+    .map-row .map-title  { flex: 1; min-width: 120px; }
+    .map-badges { display: flex; gap: 6px; flex-wrap: wrap; flex-shrink: 0; }
+    .map-pair   { display: flex; align-items: center; gap: 3px; white-space: nowrap; }
+    .map-lbl    { font-size: 10px; font-weight: 600; color: var(--navy); text-transform: uppercase; letter-spacing: 0.04em; }
 
     .no-mappings { font-size: 12px; color: var(--muted); font-style: italic; padding: 2px 0; }
 
@@ -314,7 +301,8 @@
     .b-high     { background: #050203; color: #ffffff; }
     .b-moderate { background: #050203; color: #ffffff; }
     .b-low      { background: #050203; color: #ffffff; }
-    .b-core     { background: var(--navy); color: #fff; }
+    .b-core     { background: var(--navy); color: #fff; padding: 2px 5px; }
+    .ctrl-col-title .b-core { margin-left: 8px; }
     .b-dim      { background: var(--dim-bg); color: var(--dim-text); }
 
     /* ── Inline cell title/id (inside table) ── */
@@ -363,23 +351,24 @@
       word-wrap: break-word;
     }
 
-    /* ── Statement modal ── */
-    #stmt-modal {
-      position: fixed; inset: 0; z-index: 9500;
-      display: flex; align-items: center; justify-content: center;
+    /* ── Statement dialog ── */
+    dialog#stmt-modal {
+      border: none;
+      padding: 0;
+      background: transparent;
+      width: min(680px, 92vw);
+      max-height: 80vh;
+      border-radius: var(--radius);
+      box-shadow: 0 8px 32px rgba(5,2,3,0.4);
+      overflow: hidden;
     }
-    #stmt-modal-bd {
-      position: absolute; inset: 0;
+    dialog#stmt-modal::backdrop {
       background: rgba(5,2,3,0.55);
     }
     #stmt-modal-card {
-      position: relative; z-index: 1;
       background: var(--card);
-      border-radius: var(--radius);
-      box-shadow: 0 8px 32px rgba(5,2,3,0.4);
-      width: min(680px, 92vw);
-      max-height: 80vh;
       display: flex; flex-direction: column;
+      max-height: 80vh;
       overflow: hidden;
     }
     #stmt-modal-head {
@@ -402,6 +391,7 @@
       overflow-y: auto;
       white-space: pre-wrap;
       word-wrap: break-word;
+      flex: 1;
     }
 
     /* ── Loading / error ── */
@@ -459,7 +449,7 @@
       <span class="filter-sep">&nbsp;|&nbsp;</span>
       <label class="core-label">
         <input type="checkbox" id="core-only" onchange="renderControls()">
-        Core controls only
+        <span class="badge b-core">C</span> Core controls only
       </label>
     </div>
 
@@ -476,8 +466,7 @@
   </footer>
 </div>
 
-<div id="stmt-modal" style="display:none" role="dialog" aria-modal="true" aria-labelledby="stmt-modal-label">
-  <div id="stmt-modal-bd"></div>
+<dialog id="stmt-modal" aria-labelledby="stmt-modal-label">
   <div id="stmt-modal-card">
     <div id="stmt-modal-head">
       <span id="stmt-modal-label">Statement</span>
@@ -485,7 +474,7 @@
     </div>
     <div id="stmt-modal-body"></div>
   </div>
-</div>
+</dialog>
 
 <div id="tooltip"></div>
 
@@ -588,26 +577,19 @@ function buildKSIItem(ksi) {
     const ctrl = DB.controlMap[m.controlId];
     if (!ctrl) return '';
     const cid = escAttr(ctrl.controlId);
-    return `<tr>
-      <td class="col-id"><span class="cell-id nav-link" data-tip="${escAttr(ctrl.statement)}" onclick="goToControl('${cid}')">${esc(ctrl.displayId)}</span></td>
-      <td><span class="cell-ctrl-title nav-link" data-tip="${escAttr(ctrl.statement)}" onclick="goToControl('${cid}')">${esc(ctrl.title)}</span></td>
-      <td class="col-badge">${strengthBadge(m.strength, m.rationale)}</td>
-      <td class="col-badge">${automatableBadge(m.automatable, m.prerequisites)}</td>
-      <td class="col-badge">${scoreBadge(m.score)}</td>
-    </tr>`;
+    return `<div class="map-row">
+      <span class="cell-id nav-link" data-tip="${escAttr(ctrl.statement)}" onclick="goToControl('${cid}')">${esc(ctrl.displayId)}</span>
+      <span class="cell-ctrl-title nav-link map-title" data-tip="${escAttr(ctrl.statement)}" onclick="goToControl('${cid}')">${esc(ctrl.title)}</span>
+      <span class="map-badges">
+        <span class="map-pair"><span class="map-lbl">Str</span>${strengthBadge(m.strength, m.rationale)}</span>
+        <span class="map-pair"><span class="map-lbl">Auto</span>${automatableBadge(m.automatable, m.prerequisites)}</span>
+        <span class="map-pair"><span class="map-lbl">Score</span>${scoreBadge(m.score)}</span>
+      </span>
+    </div>`;
   }).join('');
 
   const body = mappings.length
-    ? `<table class="mapping-table">
-        <thead><tr>
-          <th class="col-id">Control</th>
-          <th>Title</th>
-          <th class="col-badge">Strength</th>
-          <th class="col-badge">Automatable</th>
-          <th class="col-badge">Score</th>
-        </tr></thead>
-        <tbody>${rows}</tbody>
-       </table>`
+    ? `<div class="map-rows">${rows}</div>`
     : `<div class="no-mappings">No control mappings</div>`;
 
   return `<div class="ksi-item" id="ksi-${escAttr(ksi.ksiId)}">
@@ -651,13 +633,19 @@ function renderControls() {
   container.innerHTML = '';
 
   const sorted = [...families.entries()].sort(([a], [b]) => a.localeCompare(b));
+  const blLabel = { high: 'High', moderate: 'Moderate', low: 'Low' }[currentBaseline] ?? '';
+  const qualParts = [blLabel, coreOnly ? 'Core' : ''].filter(Boolean);
+  const qualHtml = qualParts.length
+    ? ` <span class="group-qualifier">&mdash; ${qualParts.map(esc).join(' &middot; ')}</span>`
+    : '';
+
   for (const [family, fam] of sorted) {
     const avgBadge = familyAvgScoreBadge(fam.items);
     container.appendChild(buildGroup(
-      `${esc(fam.familyTitle)} <span class="group-code">(${esc(family)})</span>`,
+      `${esc(family)} &ndash; ${esc(fam.familyTitle)}${qualHtml}`,
       `${fam.items.length} controls`,
       buildControlFamily(fam.items),
-      true,       // start collapsed
+      true,
       avgBadge
     ));
   }
@@ -667,8 +655,7 @@ function renderControls() {
 
 function buildControlFamily(items) {
   const colgroup = `<colgroup>
-    <col class="c-tog"><col class="c-id"><col class="c-title">
-    <col class="c-core"><col class="c-score">
+    <col class="c-tog"><col class="c-id"><col class="c-title"><col class="c-score">
   </colgroup>`;
   return `<table class="ctrl-table">${colgroup}<tbody>${items.map(buildControlItem).join('')}</tbody></table>`;
 }
@@ -681,13 +668,7 @@ function buildControlItem(ctrl) {
     ? `<td class="ctrl-col-tog"><button class="ksi-toggle" onclick="toggleKsiDetail(this,'${toggleId}')"><span class="tog-chevron">&#9654;</span></button></td>`
     : `<td class="ctrl-col-tog"></td>`;
 
-  const blInline = `<span class="bl-inline">` +
-    `<span class="bl-tag ${ctrl.high     ? 'bl-on' : 'bl-off'}">H</span>` +
-    `<span class="bl-tag ${ctrl.moderate ? 'bl-on' : 'bl-off'}">M</span>` +
-    `<span class="bl-tag ${ctrl.low      ? 'bl-on' : 'bl-off'}">L</span>` +
-    `</span>`;
-
-  const coreCell = `<td class="ctrl-col-core">${ctrl.core ? '<span class="badge b-core">Core</span>' : ''}</td>`;
+  const coreTag = ctrl.core ? '<span class="badge b-core">C</span>' : '';
 
   const maxScore = mappings.length ? Math.max(...mappings.map(m => m.score)) : null;
   const scoreCell = `<td class="ctrl-col-score">${maxScore !== null ? scoreBadge(maxScore) : '<span class="badge b-none">None</span>'}</td>`;
@@ -696,29 +677,22 @@ function buildControlItem(ctrl) {
     const ksi = DB.ksiMap[m.ksiId];
     if (!ksi) return '';
     const kid = escAttr(ksi.ksiId);
-    return `<tr>
-      <td class="col-id"><span class="cell-id nav-link" data-tip="${escAttr(ksi.ksiStatement)}" onclick="goToKSI('${kid}')">${esc(ksi.ksiId)}</span></td>
-      <td><span class="cell-ksi-title nav-link" data-tip="${escAttr(ksi.ksiStatement)}" onclick="goToKSI('${kid}')">${esc(ksi.ksiTitle)}</span></td>
-      <td class="col-badge">${strengthBadge(m.strength, m.rationale)}</td>
-      <td class="col-badge">${automatableBadge(m.automatable, m.prerequisites)}</td>
-      <td class="col-badge">${scoreBadge(m.score)}</td>
-    </tr>`;
+    return `<div class="map-row">
+      <span class="cell-id nav-link" data-tip="${escAttr(ksi.ksiStatement)}" onclick="goToKSI('${kid}')">${esc(ksi.ksiId)}</span>
+      <span class="cell-ksi-title nav-link map-title" data-tip="${escAttr(ksi.ksiStatement)}" onclick="goToKSI('${kid}')">${esc(ksi.ksiTitle)}</span>
+      <span class="map-badges">
+        <span class="map-pair"><span class="map-lbl">Str</span>${strengthBadge(m.strength, m.rationale)}</span>
+        <span class="map-pair"><span class="map-lbl">Auto</span>${automatableBadge(m.automatable, m.prerequisites)}</span>
+        <span class="map-pair"><span class="map-lbl">Score</span>${scoreBadge(m.score)}</span>
+      </span>
+    </div>`;
   }).join('');
 
   const detailRow = mappings.length
     ? `<tr class="ctrl-detail-row" id="${toggleId}" style="display:none">
         <td></td>
-        <td colspan="4"><div class="ctrl-detail-inner">
-          <table class="mapping-table">
-            <thead><tr>
-              <th class="col-id">KSI</th>
-              <th>KSI Title</th>
-              <th class="col-badge">Strength</th>
-              <th class="col-badge">Automatable</th>
-              <th class="col-badge">Score</th>
-            </tr></thead>
-            <tbody>${mappingRows}</tbody>
-          </table>
+        <td colspan="3"><div class="ctrl-detail-inner">
+          <div class="map-rows">${mappingRows}</div>
         </div></td>
       </tr>`
     : '';
@@ -726,8 +700,7 @@ function buildControlItem(ctrl) {
   return `<tr class="ctrl-row" id="ctrl-${escAttr(ctrl.controlId)}" data-detail="${mappings.length ? toggleId : ''}">
     ${toggleCell}
     <td class="ctrl-col-id"><span class="control-id tip-only" data-tip="${escAttr(ctrl.statement)}">${esc(ctrl.displayId)}</span></td>
-    <td class="ctrl-col-title"><span class="control-title-text tip-only" data-tip="${escAttr(ctrl.statement)}">${esc(ctrl.title)}</span>${blInline}</td>
-    ${coreCell}
+    <td class="ctrl-col-title"><span class="control-title-text tip-only" data-tip="${escAttr(ctrl.statement)}">${esc(ctrl.title)}</span>${coreTag}</td>
     ${scoreCell}
   </tr>${detailRow}`;
 }
@@ -946,15 +919,15 @@ function onTipClick(e) {
   const isKsi = el.classList.contains('ksi-id') || el.classList.contains('ksi-title-text');
   stmtModalLabel.textContent = isKsi ? 'KSI Statement' : 'Control Statement';
   stmtModalBody.textContent  = text;
-  stmtModal.style.display    = 'flex';
   tipEl.style.display        = 'none';
+  stmtModal.showModal();
 }
 
-function closeStmtModal() { stmtModal.style.display = 'none'; }
+function closeStmtModal() { stmtModal.close(); }
 
 document.getElementById('stmt-modal-close').addEventListener('click', closeStmtModal);
-document.getElementById('stmt-modal-bd').addEventListener('click', closeStmtModal);
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeStmtModal(); });
+/* clicking the ::backdrop fires on the dialog element itself */
+stmtModal.addEventListener('click', e => { if (e.target === stmtModal) closeStmtModal(); });
 
 // ─── Escaping ─────────────────────────────────────────────────────────────────
 
