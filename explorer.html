@@ -3,34 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FedRAMP KSI ↔ 800-53 Explorer | Ruf Risk</title>
+  <title>NIST SP 800-53 Rev 5 to KSI Mapping Explorer | Ruf Risk</title>
   <style>
     :root {
-      --navy:       #1b3a6b;
-      --navy-light: #2a4f8e;
-      --orange:     #e87722;
-      --bg:         #f4f6f9;
-      --card:       #ffffff;
-      --border:     #dde3ec;
-      --text:       #2d3748;
-      --muted:      #718096;
-      --row-hover:  #f7f9fc;
+      /* ── Ruf Risk Brand Palette ── */
+      --rr-black:        #050203;
+      --rr-blue:         #073b4c;
+      --rr-cyan:         #118ab2;
+      --rr-light-cyan:   #88c3d7;
+      --rr-green:        #06d6a0;
+      --rr-light-green:  #b7fdeb;
+      --rr-yellow:       #ffd166;
+      --rr-light-yellow: #ffe9b4;
+      --rr-red:          #ef476f;
+      --rr-light-red:    #fde9ee;
+      --rr-grey:         #b8b5ad;
+      --rr-light-grey:   #dcdbd7;
 
-      --green-text: #276749; --green-bg: #c6f6d5;
-      --yellow-text:#744210; --yellow-bg:#fefcbf;
-      --or-text:    #7b341e; --or-bg:    #fed7aa;
-      --red-text:   #742a2a; --red-bg:   #fed7d7;
-      --blue-text:  #1a365d; --blue-bg:  #bee3f8;
-      --dim-text:   #a0aec0; --dim-bg:   #edf2f7;
+      /* ── Semantic aliases (brand-mapped) ── */
+      --navy:      #073b4c;   /* Blue  — header, group titles, primary dark */
+      --navy-light:#118ab2;   /* Cyan  — active highlights */
+      --orange:    #118ab2;   /* Cyan  — accent, links, active states */
+      --bg:        #f4f5f3;   /* warm near-white page background */
+      --card:      #ffffff;
+      --border:    #dcdbd7;   /* Light Grey */
+      --text:      #050203;   /* Deep Black */
+      --muted:     #b8b5ad;   /* Grey */
+      --row-hover: #eef7fa;   /* very light cyan tint */
+
+      /* ── Status color pairs ── */
+      --green-text:  #073b4c; --green-bg:  #b7fdeb;   /* Light Green / Blue */
+      --yellow-text: #050203; --yellow-bg: #ffd166;   /* Yellow / Black */
+      --or-text:     #ef476f; --or-bg:     #fde9ee;   /* Red / Light Red (no brand orange) */
+      --red-text:    #ffffff; --red-bg:    #ef476f;   /* White / Red */
+      --blue-text:   #073b4c; --blue-bg:   #88c3d7;   /* Blue / Light Cyan */
+      --dim-text:    #b8b5ad; --dim-bg:    #dcdbd7;   /* Grey / Light Grey */
 
       --radius: 6px;
-      --shadow: 0 1px 4px rgba(0,0,0,0.10);
+      --shadow: 0 1px 3px rgba(5,2,3,0.12);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      font-family: Arial, 'Arial Unicode MS', 'Helvetica Neue', Helvetica, sans-serif;
       font-size: 14px;
       background: var(--bg);
       color: var(--text);
@@ -45,7 +61,7 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.25);
     }
     header h1 { font-size: 19px; font-weight: 700; letter-spacing: -0.2px; }
-    header p  { font-size: 12px; color: #a8bcd8; margin-top: 2px; }
+    header p  { font-size: 12px; color: #88c3d7; margin-top: 2px; }
     header strong { color: var(--orange); }
 
     /* ── Mode bar ── */
@@ -140,10 +156,10 @@
       font-weight: 700;
       color: var(--navy);
     }
-    .group-code { font-size: 12px; font-weight: 400; color: var(--muted); }
+    .group-code { font-size: 12px; font-weight: 400; color: var(--navy); }
     .group-count {
       font-size: 11px;
-      color: var(--muted);
+      color: var(--navy);
       background: var(--bg);
       border: 1px solid var(--border);
       border-radius: 10px;
@@ -159,19 +175,19 @@
     .ksi-item:last-child { border-bottom: none; }
     .ksi-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
     .ksi-id {
-      font-family: 'Courier New', Courier, monospace;
+      font-family: 'Lucida Console', 'Courier New', Courier, monospace;
       font-size: 11px;
-      color: var(--muted);
+      color: var(--navy);
       white-space: nowrap;
       cursor: help;
       border-bottom: 1px dashed transparent;
     }
-    .ksi-id:hover { border-bottom-color: #b0bec5; }
+    .ksi-id:hover { border-bottom-color: var(--navy); }
     .ksi-title-text {
       font-weight: 600;
       color: var(--navy);
       cursor: help;
-      border-bottom: 1px dashed #b0bec5;
+      border-bottom: 1px dashed #b8b5ad;
     }
     .ksi-title-text:hover { border-bottom-color: var(--navy); }
 
@@ -191,7 +207,7 @@
       overflow: hidden;
     }
     .ctrl-row:hover td { background: var(--row-hover); }
-    .ctrl-row.expanded td { background: #eef2f8; }
+    .ctrl-row.expanded td { background: #e6f4f9; }
 
     .ctrl-col-tog   { text-align: center; padding-left: 0 !important; padding-right: 0 !important; }
     .ctrl-col-id    { white-space: nowrap; padding-left: 4px !important; }
@@ -203,25 +219,25 @@
     .ctrl-detail-row td {
       padding: 0;
       border-bottom: 1px solid var(--border);
-      background: #f9fafc;
+      background: #f4fbfd;
     }
     .ctrl-detail-inner { padding: 6px 12px 10px 12px; }
 
     .control-id {
-      font-family: 'Courier New', Courier, monospace;
+      font-family: 'Lucida Console', 'Courier New', Courier, monospace;
       font-size: 12px;
       font-weight: 700;
-      color: var(--orange);
+      color: #0a6d8e;   /* dark-teal: 5.85:1 on white, WCAG AA */
       white-space: nowrap;
       cursor: help;
       border-bottom: 1px dashed transparent;
     }
-    .control-id:hover { border-bottom-color: var(--orange); }
+    .control-id:hover { border-bottom-color: #0a6d8e; }
     .control-title-text {
       font-weight: 600;
       color: var(--navy);
       cursor: help;
-      border-bottom: 1px dashed #b0bec5;
+      border-bottom: 1px dashed #b8b5ad;
     }
     .control-title-text:hover { border-bottom-color: var(--navy); }
 
@@ -257,12 +273,12 @@
       font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      color: var(--muted);
+      color: var(--navy);   /* 8.7:1 on #dcdbd7, WCAG AA */
       border-bottom: 1px solid var(--border);
       font-weight: 600;
-      background: #f1f4f9;
+      background: #dcdbd7;
     }
-    .mapping-table td { padding: 6px 10px; border-bottom: 1px solid #edf0f5; vertical-align: middle; }
+    .mapping-table td { padding: 6px 10px; border-bottom: 1px solid #dcdbd7; vertical-align: middle; }
     .mapping-table tr:last-child td { border-bottom: none; }
     .mapping-table tbody tr:hover td { background: var(--row-hover); }
 
@@ -289,27 +305,27 @@
     .b-none      { background: var(--red-bg);    color: var(--red-text); }
     .b-simple    { background: var(--green-bg);  color: var(--green-text); }
     .b-complex   { background: var(--or-bg);     color: var(--or-text); }
-    .b-excellent  { background: var(--blue-bg);   color: var(--blue-text); }
-    .b-exc-good   { background: #b2dfdb;          color: #00695c; }   /* teal — between blue & green */
+    .b-excellent  { background: #118ab2; color: #ffffff; }              /* Cyan — strongest positive */
+    .b-exc-good   { background: #88c3d7; color: #073b4c; }             /* Light Cyan / Blue */
     .b-good       { background: var(--green-bg);  color: var(--green-text); }
-    .b-good-fair  { background: #dcedc8;          color: #558b2f; }   /* light green — between green & yellow */
+    .b-good-fair  { background: #ffe9b4; color: #050203; }             /* Light Yellow / Black */
     .b-poor       { background: var(--or-bg);     color: var(--or-text); }
 
-    .b-high     { background: #111; color: #fff; }
-    .b-moderate { background: #111; color: #fff; }
-    .b-low      { background: #111; color: #fff; }
+    .b-high     { background: #050203; color: #ffffff; }
+    .b-moderate { background: #050203; color: #ffffff; }
+    .b-low      { background: #050203; color: #ffffff; }
     .b-core     { background: var(--navy); color: #fff; }
     .b-dim      { background: var(--dim-bg); color: var(--dim-text); }
 
     /* ── Inline cell title/id (inside table) ── */
     .cell-id {
-      font-family: 'Courier New', Courier, monospace;
+      font-family: 'Lucida Console', 'Courier New', Courier, monospace;
       font-size: 11px;
-      color: var(--muted);
+      color: #0a6d8e;   /* dark-teal: 5.85:1 on white, WCAG AA */
     }
     .cell-ksi-title, .cell-ctrl-title {
       color: var(--navy);
-      border-bottom: 1px dashed #b0bec5;
+      border-bottom: 1px dashed #b8b5ad;
     }
 
     /* nav-link: clickable cross-view navigation (also carries data-tip) */
@@ -318,8 +334,8 @@
       transition: color 0.12s, border-color 0.12s;
     }
     .nav-link:hover { color: var(--orange); border-bottom-color: var(--orange); }
-    /* tooltip-only items that are not nav links */
-    .tip-only { cursor: help; }
+    /* tooltip-only items that are not nav links — click opens full-statement modal */
+    .tip-only { cursor: pointer; }
     .tip-only:hover { border-bottom-color: var(--navy); }
 
     /* flash highlight when scrolled-to via cross-view link */
@@ -334,10 +350,8 @@
       position: fixed;
       z-index: 9000;
       max-width: 380px;
-      max-height: 240px;
-      overflow-y: auto;
-      background: #1a202c;
-      color: #e2e8f0;
+      background: #050203;
+      color: #dcdbd7;
       font-size: 12px;
       line-height: 1.55;
       padding: 10px 14px;
@@ -345,6 +359,47 @@
       box-shadow: 0 6px 24px rgba(0,0,0,0.35);
       pointer-events: none;
       display: none;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    /* ── Statement modal ── */
+    #stmt-modal {
+      position: fixed; inset: 0; z-index: 9500;
+      display: flex; align-items: center; justify-content: center;
+    }
+    #stmt-modal-bd {
+      position: absolute; inset: 0;
+      background: rgba(5,2,3,0.55);
+    }
+    #stmt-modal-card {
+      position: relative; z-index: 1;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 32px rgba(5,2,3,0.4);
+      width: min(680px, 92vw);
+      max-height: 80vh;
+      display: flex; flex-direction: column;
+      overflow: hidden;
+    }
+    #stmt-modal-head {
+      background: var(--navy);
+      color: #fff;
+      padding: 10px 16px;
+      display: flex; align-items: center; justify-content: space-between;
+      font-weight: 600; font-size: 13px;
+      flex-shrink: 0;
+    }
+    #stmt-modal-close {
+      background: none; border: none; color: #88c3d7;
+      font-size: 22px; cursor: pointer; line-height: 1; padding: 0 2px;
+    }
+    #stmt-modal-close:hover { color: #fff; }
+    #stmt-modal-body {
+      padding: 16px 20px;
+      font-size: 13px; line-height: 1.7;
+      color: var(--text);
+      overflow-y: auto;
       white-space: pre-wrap;
       word-wrap: break-word;
     }
@@ -381,8 +436,8 @@
 <body>
 
 <header>
-  <h1>FedRAMP KSI &harr; 800-53 Explorer</h1>
-  <p><strong>Ruf Risk LLC</strong> &mdash; Key Security Indicators mapped to NIST SP 800-53 Rev 5</p>
+  <h1>NIST SP 800-53 Rev&nbsp;5 to KSI Mapping Explorer</h1>
+  <p><strong>Ruf Risk</strong> &mdash; Key Security Indicators mapped to NIST SP 800-53 Rev 5</p>
 </header>
 
 <div id="loading">
@@ -400,11 +455,11 @@
 
   <div id="filter-bar" class="filter-bar" style="display:none">
     <span class="filter-label">Baseline</span>
-    <button class="filter-btn active" data-bl="all"      onclick="setBaseline(this)">All</button>
-    <button class="filter-btn"        data-bl="high"     onclick="setBaseline(this)">High</button>
+    <button class="filter-btn active" data-bl="high"     onclick="setBaseline(this)">High</button>
     <button class="filter-btn"        data-bl="moderate" onclick="setBaseline(this)">Moderate</button>
     <button class="filter-btn"        data-bl="low"      onclick="setBaseline(this)">Low</button>
     <button class="filter-btn"        data-bl="none"     onclick="setBaseline(this)">No Baseline</button>
+    <button class="filter-btn"        data-bl="all"      onclick="setBaseline(this)">All</button>
     <span class="filter-sep">&nbsp;|&nbsp;</span>
     <label class="core-label">
       <input type="checkbox" id="core-only" onchange="renderControls()">
@@ -418,6 +473,21 @@
     <div id="view-ksi"></div>
     <div id="view-controls" style="display:none"></div>
   </main>
+
+  <footer style="background:var(--navy);color:#dcdbd7;padding:10px 24px;font-size:12px;margin-top:8px;">
+    <p style="margin:0;">&copy; Ruf Risk &mdash; Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" style="color:#88c3d7;text-decoration:underline;">Creative Commons Attribution 4.0 International (CC&nbsp;BY&nbsp;4.0)</a></p>
+  </footer>
+</div>
+
+<div id="stmt-modal" style="display:none" role="dialog" aria-modal="true" aria-labelledby="stmt-modal-label">
+  <div id="stmt-modal-bd"></div>
+  <div id="stmt-modal-card">
+    <div id="stmt-modal-head">
+      <span id="stmt-modal-label">Statement</span>
+      <button id="stmt-modal-close" aria-label="Close">&times;</button>
+    </div>
+    <div id="stmt-modal-body"></div>
+  </div>
 </div>
 
 <div id="tooltip"></div>
@@ -425,71 +495,30 @@
 <script>
 'use strict';
 
-const DATA_URL_LIVE   = 'https://rufrisk.com/wp-content/uploads/2026/08/fedramp_ksi_800-53_dataset.json';
-const DATA_SCRIPT_LOCAL = './data/fedramp_ksi_800-53_dataset.js';
+const DATA_URL = 'https://raw.githubusercontent.com/brian-ruf/20x_analysis/refs/heads/main/data/fedramp_ksi_800-53_dataset.json';
 
 /** @type {{ KSIs: object[], Rev5_controls: object[], Mapping: object[], ksiMap: object, controlMap: object, mappingsByKsi: object, mappingsByControl: object }|null} */
 let DB = null;
 let currentMode     = 'controls';
-let currentBaseline = 'all';
-let dataSource      = 'live';  // 'live' or 'local'
+let currentBaseline = 'high';
+const TOOLTIP_LIMIT = 300;
 
 // ─── Data loading ────────────────────────────────────────────────────────────
 
-async function fetchJSON(url) {
-  const resp = await fetch(url);
-  if (!resp.ok) throw new Error(`HTTP ${resp.status} – ${resp.statusText}`);
-  return resp.json();
-}
-
-/** Load local data via <script> tag — bypasses CORS restrictions on file:// origins. */
-function loadViaScriptTag(src) {
-  return new Promise((resolve, reject) => {
-    const script = document.createElement('script');
-    script.src = src;
-    script.onload = () => {
-      if (window.__FRR_DATA) {
-        const data = window.__FRR_DATA;
-        delete window.__FRR_DATA;
-        resolve(data);
-      } else {
-        reject(new Error('Script loaded but window.__FRR_DATA was not set'));
-      }
-    };
-    script.onerror = () => reject(new Error(`Could not load ${src}`));
-    document.head.appendChild(script);
-  });
-}
-
 async function loadData() {
-  let raw = null;
-  let source = '';
   try {
-    raw    = await fetchJSON(DATA_URL_LIVE);
-    source = 'live';
-  } catch (_) {
-    // fetch() blocked (CORS or no network) — inject local script tag instead,
-    // which works even under file:// because <script src> is not CORS-restricted.
-    try {
-      raw    = await loadViaScriptTag(DATA_SCRIPT_LOCAL);
-      source = 'local';
-    } catch (err) {
-      document.getElementById('loading').style.display = 'none';
-      const el = document.getElementById('error-msg');
-      el.style.display = 'block';
-      el.textContent   = `Failed to load data from live URL and local fallback: ${err.message}`;
-      return;
-    }
+    const resp = await fetch(DATA_URL);
+    if (!resp.ok) throw new Error(`HTTP ${resp.status} – ${resp.statusText}`);
+    DB = buildIndex(await resp.json());
+  } catch (err) {
+    document.getElementById('loading').style.display = 'none';
+    const el = document.getElementById('error-msg');
+    el.style.display = 'block';
+    el.textContent   = `Failed to load data: ${err.message}`;
+    return;
   }
-  DB = buildIndex(raw);
   document.getElementById('loading').style.display = 'none';
   document.getElementById('app').style.display     = 'block';
-  dataSource = source;
-  if (source === 'local') {
-    const bar = document.getElementById('summary-bar');
-    bar.style.background = '#fffbeb';
-    bar.style.color = '#92400e';
-  }
   setMode('controls');
   setTimeout(handleInitialHash, 0);
 }
@@ -538,9 +567,8 @@ function renderKSIs() {
     groups.get(ksi.ksiGroupCode).items.push(ksi);
   }
 
-  const localNote = dataSource === 'local' ? '⚠ Local file · ' : '';
   document.getElementById('summary-bar').textContent =
-    `${localNote}${DB.KSIs.length} KSIs across ${groups.size} groups · ${DB.Mapping.length} total control mappings`;
+    `${DB.KSIs.length} KSIs across ${groups.size} groups · ${DB.Mapping.length} total control mappings`;
 
   const container = document.getElementById('view-ksi');
   container.innerHTML = '';
@@ -619,9 +647,8 @@ function renderControls() {
   }
 
   const mappedCount = filtered.filter(c => (DB.mappingsByControl[c.controlId]?.length ?? 0) > 0).length;
-  const localNote2 = dataSource === 'local' ? '⚠ Local file · ' : '';
   document.getElementById('summary-bar').textContent =
-    `${localNote2}${filtered.length} controls across ${families.size} families · ${mappedCount} have KSI mappings`;
+    `${filtered.length} controls across ${families.size} families · ${mappedCount} have KSI mappings`;
 
   const container = document.getElementById('view-controls');
   container.innerHTML = '';
@@ -876,12 +903,22 @@ function wireTooltips(root) {
     el.addEventListener('mousemove',  onTipMove);
     el.addEventListener('mouseleave', onTipLeave);
   });
+  root.querySelectorAll('.tip-only[data-tip]').forEach(el => {
+    el.addEventListener('click', onTipClick);
+  });
 }
 
 function onTipEnter(e) {
   const text = e.currentTarget.dataset.tip;
   if (!text) return;
-  tipEl.textContent  = text;
+  const isTipOnly = e.currentTarget.classList.contains('tip-only');
+  let display = text;
+  if (text.length > TOOLTIP_LIMIT) {
+    const cut = text.lastIndexOf(' ', TOOLTIP_LIMIT);
+    display = text.slice(0, cut > 0 ? cut : TOOLTIP_LIMIT) + '…';
+    if (isTipOnly) display += '\n\n[Click for full statement]';
+  }
+  tipEl.textContent   = display;
   tipEl.style.display = 'block';
   placeTip(e.clientX, e.clientY);
 }
@@ -899,6 +936,29 @@ function placeTip(cx, cy) {
   tipEl.style.left = `${Math.max(4, x)}px`;
   tipEl.style.top  = `${Math.max(4, y)}px`;
 }
+
+// ─── Statement modal ──────────────────────────────────────────────────────────
+
+const stmtModal      = document.getElementById('stmt-modal');
+const stmtModalLabel = document.getElementById('stmt-modal-label');
+const stmtModalBody  = document.getElementById('stmt-modal-body');
+
+function onTipClick(e) {
+  const el   = e.currentTarget;
+  const text = el.dataset.tip;
+  if (!text) return;
+  const isKsi = el.classList.contains('ksi-id') || el.classList.contains('ksi-title-text');
+  stmtModalLabel.textContent = isKsi ? 'KSI Statement' : 'Control Statement';
+  stmtModalBody.textContent  = text;
+  stmtModal.style.display    = 'flex';
+  tipEl.style.display        = 'none';
+}
+
+function closeStmtModal() { stmtModal.style.display = 'none'; }
+
+document.getElementById('stmt-modal-close').addEventListener('click', closeStmtModal);
+document.getElementById('stmt-modal-bd').addEventListener('click', closeStmtModal);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeStmtModal(); });
 
 // ─── Escaping ─────────────────────────────────────────────────────────────────
 
