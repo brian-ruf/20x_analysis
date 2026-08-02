@@ -43,6 +43,22 @@
       --shadow: 0 1px 3px rgba(5,2,3,0.12);
     }
 
+    /* ── EZD theme — activated by ?ezd=true in the URL ── */
+    .theme-ezd {
+      --navy:      #1b3a6b;   /* deep navy blue */
+      --navy-light:#2d6ea8;   /* medium blue */
+      --orange:    #b85515;   /* burnt orange — 4.83:1 on white, WCAG AA */
+      --bg:        #f4f5f7;
+      --row-hover: #fef0e7;   /* light orange tint */
+    }
+    /* hardcoded teal overrides → orange-derived equivalents */
+    .theme-ezd .control-id           { color: #8b3d00; }
+    .theme-ezd .control-id:hover     { border-bottom-color: #8b3d00; }
+    .theme-ezd .cell-id              { color: #8b3d00; }
+    .theme-ezd .ctrl-row.expanded td { background: #fdebd8; }
+    .theme-ezd .ctrl-detail-row td   { background: #fdf5ee; }
+    .theme-ezd #stmt-modal-close     { color: #f4a261; }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
@@ -461,9 +477,6 @@
     <div id="view-controls" style="display:none"></div>
   </main>
 
-  <footer style="background:var(--navy);color:#dcdbd7;padding:10px 24px;font-size:12px;margin-top:8px;">
-    <p style="margin:0;">&copy; Ruf Risk &mdash; Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" style="color:#88c3d7;text-decoration:underline;">Creative Commons Attribution 4.0 International (CC&nbsp;BY&nbsp;4.0)</a></p>
-  </footer>
 </div>
 
 <dialog id="stmt-modal" aria-labelledby="stmt-modal-label">
@@ -480,6 +493,11 @@
 
 <script>
 'use strict';
+
+// ─── Theme detection ──────────────────────────────────────────────────────────
+if (new URLSearchParams(window.location.search).get('ezd') === 'true') {
+  document.documentElement.classList.add('theme-ezd');
+}
 
 const DATA_URL = 'https://raw.githubusercontent.com/brian-ruf/20x_analysis/refs/heads/main/data/fedramp_ksi_800-53_dataset.json';
 
