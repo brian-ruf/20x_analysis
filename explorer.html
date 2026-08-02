@@ -70,12 +70,83 @@
     }
 
     /* ── Sticky heading ── */
+    #intro {
+      padding: 1rem 1rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    #intro p { margin: 0 0 0.5rem; }
+    #intro a { color: var(--navy-light); }
+    #intro a:hover { color: var(--navy); }
+    #intro details { margin-top: 0.25rem; }
+    #intro summary {
+      cursor: pointer;
+      list-style: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: var(--navy);
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    #intro summary::-webkit-details-marker { display: none; }
+    #intro summary::before {
+      content: '▶';
+      font-size: 0.65rem;
+      transition: transform 0.15s;
+    }
+    #intro details[open] summary::before { transform: rotate(90deg); }
+    #intro ul {
+      margin: 0.5rem 0 0 1.25rem;
+      padding: 0;
+    }
+    #intro ul li { margin-bottom: 0.25rem; }
+
+    .methodology {
+      padding: 1rem;
+      border-top: 2px solid var(--border);
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+    .methodology details {
+      margin-bottom: 0.5rem;
+    }
+    .methodology summary {
+      cursor: pointer;
+      list-style: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.25rem 0;
+    }
+    .methodology summary::-webkit-details-marker { display: none; }
+    .methodology summary::before {
+      content: '▶';
+      font-size: 0.65rem;
+      transition: transform 0.15s;
+    }
+    .methodology details[open] summary::before { transform: rotate(90deg); }
+    .method-body {
+      padding: 0.5rem 0 0.75rem 1rem;
+    }
+    .method-body p { margin: 0.5rem 0; }
+    .method-body ul { margin: 0.35rem 0 0.35rem 1.5rem; padding: 0; }
+    .method-body li { margin-bottom: 0.25rem; }
+    .method-body a { color: var(--navy-light); }
+    .method-body a:hover { color: var(--navy); }
+    .method-body .values-label { text-decoration: underline; }
+    .method-hr { border: none; border-top: 1px solid var(--border); margin: 0.75rem 0; }
+    .method-license { margin: 0.75rem 0 0; font-size: 0.8rem; color: var(--muted); }
+    .method-license a { color: var(--muted); }
+    .method-license a:hover { color: var(--navy); }
+
     #sticky-head {
-      position: sticky;
-      top: 0;
-      z-index: 200;
       background: var(--card);
-      box-shadow: 0 2px 6px rgba(5,2,3,0.12);
+      border-bottom: 1px solid var(--border);
     }
 
     /* ── Mode bar ── */
@@ -449,6 +520,20 @@
 
 <div id="app" style="display:none">
 
+  <div id="intro">
+    <p><strong>Target Audience:</strong> Agency Authorizing Officials (AOs) and their advisors.</p>
+    <p>This is an analysis of how well NIST SP 800-53 Baselines are addressed by FedRAMP 20x Key Security Indicators (KSIs). It is based on the controls cited by the FedRAMP PMO for each KSI. For more information, see the <a href="#analysis-methodology" onclick="expandMethodology()">Analysis Methodology</a> at the bottom of this page.</p>
+    <details>
+      <summary><strong>Instructions</strong></summary>
+      <ul>
+        <li>Click the desired baseline to see how well each family and individual control is covered by KSIs.</li>
+        <li>Check the <strong>Core controls only</strong> box to see KSI coverage of the legacy FedRAMP core controls (also known as critical controls).</li>
+        <li>Hover over a control&rsquo;s <strong>Strength</strong> rating to see rationale.</li>
+        <li>Hover over a control&rsquo;s <strong>Automatable</strong> rating to see prerequisites.</li>
+      </ul>
+    </details>
+  </div>
+
   <div id="sticky-head">
     <div class="mode-bar">
       <button class="mode-btn active" id="btn-controls" onclick="setMode('controls')">By Controls</button>
@@ -476,6 +561,65 @@
     <div id="view-ksi"></div>
     <div id="view-controls" style="display:none"></div>
   </main>
+
+  <div id="analysis-methodology" class="methodology">
+
+    <details>
+      <summary>Analysis Methodology</summary>
+      <div class="method-body">
+        <p>The FedRAMP PMO identifies relevant NIST SP 800-53 controls for each KSI. Each KSI/Control relationship is assessed using the following two criteria:</p>
+        <ul>
+          <li><strong>Strength</strong>: The KSI&rsquo;s ability to adequately reflect satisfaction of the control requirement. Hover over each <em>Strength</em> rating to see its rationale.<br>
+            <span class="values-label">Values</span>:
+            <ul>
+              <li><strong>Strong</strong> (3 points): A clear relationship between the defined KSI and control satisfaction.</li>
+              <li><strong>Fair</strong> (2 points): Some relationship exists between the defined KSI and control satisfaction, but it does not provide a complete picture.</li>
+              <li><strong>Weak</strong> (1 point): The KSI has a topical relationship to the control, but is a poor indicator of satisfaction.</li>
+              <li><strong>None</strong> (0 points): The KSI is not a reflection of control satisfaction.</li>
+            </ul>
+          </li>
+          <li><strong>Automatable</strong>: The ease of automating KSI evidence collection. Hover over each <em>Automatable</em> rating to see its prerequisites.<br>
+            <span class="values-label">Values</span>:
+            <ul>
+              <li><strong>Simple</strong> (3 points): Easy queries. Straight-forward data collection.</li>
+              <li><strong>Fair</strong> (2 points): More complex queries. Data correlation required.</li>
+              <li><strong>Complex</strong> (1 point): Difficult to collect. Complex data correlation. May require human intervention and/or agentic AI support.</li>
+              <li><strong>None</strong> (0 points): Unable to collect via traditional automation. May require human intervention or may be possible with agentic AI.</li>
+            </ul>
+          </li>
+        </ul>
+        <p>Each KSI/Control relationship was then assigned a <strong>Score</strong>, derived by multiplying the <em>Strength</em> and <em>Automatable</em> ratings.<br>
+          <span class="values-label">Values</span>:</p>
+        <ul>
+          <li><strong>Excellent</strong> (9 points): Automated KSI monitoring provides a highly reliable reflection of control satisfaction.</li>
+          <li><strong>Good</strong> (6 points): Automated KSI monitoring provides a reasonable reflection of control satisfaction.</li>
+          <li><strong>Fair</strong> (4 points): Automated KSI monitoring provides some reflection of control satisfaction, with gaps.</li>
+          <li><strong>Poor</strong> (1&ndash;3 points): Automated KSI monitoring provides only a minimal reflection of control satisfaction with major gaps.</li>
+          <li><strong>None</strong> (0 points): Automated KSI monitoring is not a reflection of control satisfaction.</li>
+        </ul>
+        <p><strong>Control Coverage</strong>:</p>
+        <p>Controls with two or more KSI relationships (Strength is Weak or better) are further evaluated in the aggregate to determine if a collection of KSI telemetry provides greater control coverage, and an aggregate coverage score is assigned with a rationale.</p>
+        <p>Controls with exactly one KSI relationship (Strength is Weak or better) are assigned the relationship <em>Score</em> as the <em>Coverage</em>.</p>
+        <p>Controls with no KSI relationship (Strength is Weak or better) are assigned <em>None</em> as the <em>Coverage</em>.</p>
+        <p><strong>Family Coverage</strong>: The family <em>Score</em> is the <em>average</em> of all control Coverage scores in that family, based on the selected baseline.</p>
+      </div>
+    </details>
+
+    <hr class="method-hr">
+
+    <details>
+      <summary>Additional Notes</summary>
+      <div class="method-body">
+        <ul>
+          <li><strong>Core</strong> indicates a legacy FedRAMP <em>Core Control</em>. Sometimes referred to as a <em>Critical Control</em>.</li>
+          <li><strong>Change Requests</strong>: If you see a problem or believe the analysis is incorrect, please submit an <a href="https://github.com/brian-ruf/20x_analysis/issues/new" target="_blank" rel="noopener">issue on the GitHub 20x Analysis Repository</a>.</li>
+        </ul>
+      </div>
+    </details>
+
+    <p class="method-license">The above data and analysis is licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.</p>
+
+  </div>
 
 </div>
 
@@ -961,6 +1105,11 @@ function escAttr(s) {
 }
 
 // ─── iframe height signaling ──────────────────────────────────────────────────
+
+function expandMethodology() {
+  const det = document.querySelector('#analysis-methodology details');
+  if (det) det.open = true;
+}
 
 function notifyHeight() {
   window.parent.postMessage({ height: document.body.scrollHeight }, '*');
