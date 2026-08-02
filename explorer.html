@@ -269,9 +269,9 @@
     .map-row:hover { background: var(--row-hover); }
     .map-row .cell-id    { flex-shrink: 0; }
     .map-row .map-title  { flex: 1; min-width: 120px; }
-    .map-badges { display: flex; gap: 6px; flex-wrap: wrap; flex-shrink: 0; }
-    .map-pair   { display: flex; align-items: center; gap: 3px; white-space: nowrap; }
-    .map-lbl    { font-size: 10px; font-weight: 600; color: var(--navy); text-transform: uppercase; letter-spacing: 0.04em; }
+    .map-ratings { display: flex; gap: 10px; flex-shrink: 0; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 5px 10px; }
+    .map-col     { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+    .map-lbl     { font-size: 10px; font-weight: 600; color: var(--navy); text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; }
 
     .no-mappings { font-size: 12px; color: var(--muted); font-style: italic; padding: 2px 0; }
 
@@ -580,10 +580,10 @@ function buildKSIItem(ksi) {
     return `<div class="map-row">
       <span class="cell-id nav-link" data-tip="${escAttr(ctrl.statement)}" onclick="goToControl('${cid}')">${esc(ctrl.displayId)}</span>
       <span class="cell-ctrl-title nav-link map-title" data-tip="${escAttr(ctrl.statement)}" onclick="goToControl('${cid}')">${esc(ctrl.title)}</span>
-      <span class="map-badges">
-        <span class="map-pair"><span class="map-lbl">Str</span>${strengthBadge(m.strength, m.rationale)}</span>
-        <span class="map-pair"><span class="map-lbl">Auto</span>${automatableBadge(m.automatable, m.prerequisites)}</span>
-        <span class="map-pair"><span class="map-lbl">Score</span>${scoreBadge(m.score)}</span>
+      <span class="map-ratings">
+        <span class="map-col"><span class="map-lbl">Strength</span>${strengthBadge(m.strength, m.rationale)}</span>
+        <span class="map-col"><span class="map-lbl">Automatable</span>${automatableBadge(m.automatable, m.prerequisites)}</span>
+        <span class="map-col"><span class="map-lbl">Score</span>${scoreBadge(m.score)}</span>
       </span>
     </div>`;
   }).join('');
@@ -680,10 +680,10 @@ function buildControlItem(ctrl) {
     return `<div class="map-row">
       <span class="cell-id nav-link" data-tip="${escAttr(ksi.ksiStatement)}" onclick="goToKSI('${kid}')">${esc(ksi.ksiId)}</span>
       <span class="cell-ksi-title nav-link map-title" data-tip="${escAttr(ksi.ksiStatement)}" onclick="goToKSI('${kid}')">${esc(ksi.ksiTitle)}</span>
-      <span class="map-badges">
-        <span class="map-pair"><span class="map-lbl">Str</span>${strengthBadge(m.strength, m.rationale)}</span>
-        <span class="map-pair"><span class="map-lbl">Auto</span>${automatableBadge(m.automatable, m.prerequisites)}</span>
-        <span class="map-pair"><span class="map-lbl">Score</span>${scoreBadge(m.score)}</span>
+      <span class="map-ratings">
+        <span class="map-col"><span class="map-lbl">Strength</span>${strengthBadge(m.strength, m.rationale)}</span>
+        <span class="map-col"><span class="map-lbl">Automatable</span>${automatableBadge(m.automatable, m.prerequisites)}</span>
+        <span class="map-col"><span class="map-lbl">Score</span>${scoreBadge(m.score)}</span>
       </span>
     </div>`;
   }).join('');
