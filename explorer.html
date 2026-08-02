@@ -879,7 +879,6 @@ function goToControl(controlId) {
     const anchor = 'ctrl-' + controlId;
     const el = expandToAnchor(anchor);
     if (el) {
-      history.replaceState(null, '', '#' + anchor);
       el.scrollIntoView({ behavior: 'smooth', block: 'center' });
       flashHighlight(el);
     }
@@ -892,7 +891,6 @@ function goToKSI(ksiId) {
     const anchor = 'ksi-' + ksiId;
     const el = expandToAnchor(anchor);
     if (el) {
-      history.replaceState(null, '', '#' + anchor);
       el.scrollIntoView({ behavior: 'smooth', block: 'center' });
       flashHighlight(el);
     }
