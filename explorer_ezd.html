@@ -569,7 +569,7 @@
 
   <div id="intro">
     <p><strong>Target Audience:</strong> Agency Authorizing Officials (AOs) and their advisors.</p>
-    <p>This is an analysis of how well NIST SP 800-53 Baselines are addressed by FedRAMP 20x Key Security Indicators (KSIs). It is based on the controls cited by the FedRAMP PMO for each KSI. For more information, see the <a href="#analysis-methodology" onclick="expandMethodology()">Analysis Methodology</a> at the bottom of this page.</p>
+    <p>This is an analysis of how well NIST SP 800-53 Baselines are addressed by FedRAMP 20x Key Security Indicators (KSIs). It is based on the controls cited by the FedRAMP PMO for each KSI. For more information, see the <a href="#analysis-methodology" onclick="event.preventDefault(); expandMethodology()">Analysis Methodology</a> at the bottom of this page.</p>
     <details>
       <summary><strong>Instructions</strong></summary>
       <ul>
@@ -1160,8 +1160,12 @@ function escAttr(s) {
 // ─── iframe height signaling ──────────────────────────────────────────────────
 
 function expandMethodology() {
-  const det = document.querySelector('#analysis-methodology details');
+  const section = document.getElementById('analysis-methodology');
+  const det = section?.querySelector('details');
   if (det) det.open = true;
+  setTimeout(() => {
+    section?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 50);
 }
 
 function notifyHeight() {
