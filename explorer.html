@@ -194,15 +194,49 @@
     .filter-btn:hover  { border-color: var(--navy); color: var(--navy); }
     .filter-btn.active { background: var(--navy); color: #fff; border-color: var(--navy); }
     .filter-sep { color: var(--border); margin: 0 4px; }
-    .core-label {
+    .core-label, .ai-label {
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
       font-size: 12px;
       cursor: pointer;
       color: var(--text);
     }
-    .core-label input { cursor: pointer; accent-color: var(--navy); }
+    .ai-label { margin-left: auto; }
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 32px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+    .toggle-switch input { opacity: 0; width: 0; height: 0; position: absolute; }
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      inset: 0;
+      background: var(--border);
+      border-radius: 18px;
+      transition: background 0.2s;
+    }
+    .toggle-slider::before {
+      content: '';
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      left: 3px;
+      bottom: 3px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform 0.2s;
+    }
+    .toggle-switch input:checked + .toggle-slider { background: var(--navy); }
+    .toggle-switch input:checked + .toggle-slider::before { transform: translateX(14px); }
+    .toggle-switch input:focus-visible + .toggle-slider { outline: 2px solid var(--navy); outline-offset: 2px; }
+    #filter-bar.ksi-mode .filter-btn,
+    #filter-bar.ksi-mode .filter-label,
+    #filter-bar.ksi-mode .filter-sep,
+    #filter-bar.ksi-mode .core-label { display: none; }
 
     /* ── Summary bar ── */
     .summary-bar {
@@ -375,7 +409,7 @@
       font-weight: 600;
       white-space: nowrap;
     }
-    .badge.tip { cursor: help; }
+    .badge.tip { cursor: pointer; }
 
     .b-strong    { background: var(--green-bg);  color: var(--green-text); }
     .b-fair      { background: var(--yellow-bg); color: var(--yellow-text); }
@@ -531,7 +565,8 @@
       <summary><strong>Instructions</strong></summary>
       <ul>
         <li>Click the desired baseline to see how well each family and individual control is covered by KSIs.</li>
-        <li>Check the <strong>Core controls only</strong> box to see KSI coverage of the legacy FedRAMP core controls (also known as critical controls).</li>
+        <li>Toggle <strong>Core controls only</strong> to see KSI coverage of the legacy FedRAMP core controls (also known as critical controls).</li>
+        <li>Toggle <strong>Agentic AI Support</strong> to see how scores can improve when Agentic AI is included in the automation solution.</li>
         <li>Hover over a control&rsquo;s <strong>Strength</strong> rating to see rationale.</li>
         <li>Hover over a control&rsquo;s <strong>Automatable</strong> rating to see prerequisites.</li>
       </ul>
@@ -544,7 +579,7 @@
       <button class="mode-btn"        id="btn-ksi"      onclick="setMode('ksi')">By KSI</button>
     </div>
 
-    <div id="filter-bar" class="filter-bar" style="display:none">
+    <div id="filter-bar" class="filter-bar ksi-mode">
       <span class="filter-label">Baseline</span>
       <button class="filter-btn active" data-bl="high"     onclick="setBaseline(this)">High</button>
       <button class="filter-btn"        data-bl="moderate" onclick="setBaseline(this)">Moderate</button>
@@ -552,9 +587,19 @@
       <button class="filter-btn"        data-bl="none"     onclick="setBaseline(this)">No Baseline</button>
       <button class="filter-btn"        data-bl="all"      onclick="setBaseline(this)">All</button>
       <span class="filter-sep">&nbsp;|&nbsp;</span>
-      <label class="core-label">
-        <input type="checkbox" id="core-only" onchange="renderControls()">
+      <label class="core-label hover-tip" data-tip="Toggle to see KSI coverage of the legacy FedRAMP core controls (also known as critical controls).">
+        <span class="toggle-switch">
+          <input type="checkbox" id="core-only" onchange="renderControls()">
+          <span class="toggle-slider"></span>
+        </span>
         <span class="badge b-core">C</span> Core controls only
+      </label>
+      <label class="ai-label hover-tip" data-tip="Toggle to see how scores can improve when Agentic AI is included in the automation solution.">
+        <span class="toggle-switch">
+          <input type="checkbox" id="ai-mode" onchange="setAIMode(this.checked)">
+          <span class="toggle-slider"></span>
+        </span>
+        Agentic AI Support
       </label>
     </div>
 
@@ -592,6 +637,7 @@
             </ul>
           </li>
         </ul>
+        <p>The <strong>Automatable</strong> determinations initially assumed <em>no</em> agentic AI involvement. A second pass was made to determine how the scores improve when Agentic AI could reasonably contribute to KSI automation. Toggle <strong>Agentic AI Support</strong> to see how scores change with and without the use of Agentic AI.</p>
         <p>Each KSI/Control relationship was then assigned a <strong>Score</strong>, derived by multiplying the <em>Strength</em> and <em>Automatable</em> ratings.<br>
           <span class="values-label">Values</span>:</p>
         <ul>
@@ -653,6 +699,7 @@ const DATA_URL = 'https://raw.githubusercontent.com/brian-ruf/20x_analysis/refs/
 let DB = null;
 let currentMode     = 'controls';
 let currentBaseline = 'high';
+let aiMode          = false;
 const TOOLTIP_LIMIT = 300;
 
 // ─── Data loading ────────────────────────────────────────────────────────────
@@ -672,6 +719,7 @@ async function loadData() {
   document.getElementById('loading').style.display = 'none';
   document.getElementById('app').style.display     = 'block';
   setMode('controls');
+  wireTooltips(document.getElementById('filter-bar'));
   setTimeout(handleInitialHash, 0);
 }
 
@@ -696,7 +744,7 @@ function setMode(mode) {
   document.getElementById('btn-controls').classList.toggle('active', mode === 'controls');
   document.getElementById('view-ksi').style.display      = mode === 'ksi'      ? 'block' : 'none';
   document.getElementById('view-controls').style.display = mode === 'controls' ? 'block' : 'none';
-  document.getElementById('filter-bar').style.display    = mode === 'controls' ? 'flex'  : 'none';
+  document.getElementById('filter-bar').classList.toggle('ksi-mode', mode === 'ksi');
   if (mode === 'ksi') renderKSIs(); else renderControls();
 }
 
@@ -706,6 +754,40 @@ function setBaseline(btn) {
     b.classList.toggle('active', b === btn)
   );
   renderControls();
+}
+
+function getAccordionState() {
+  const groups   = [];
+  const ksiItems = new Set();
+  const ctrlDets = new Set();
+  document.querySelectorAll('.group').forEach(el => groups.push(!el.classList.contains('collapsed')));
+  document.querySelectorAll('.ksi-item:not(.collapsed)').forEach(el => { if (el.id) ksiItems.add(el.id); });
+  document.querySelectorAll('.ctrl-detail-row').forEach(el => { if (el.id && el.style.display !== 'none') ctrlDets.add(el.id); });
+  return { groups, ksiItems, ctrlDets };
+}
+
+function restoreAccordionState({ groups, ksiItems, ctrlDets }) {
+  document.querySelectorAll('.group').forEach((el, i) => { if (groups[i]) el.classList.remove('collapsed'); });
+  ksiItems.forEach(id => { const el = document.getElementById(id); if (el) el.classList.remove('collapsed'); });
+  ctrlDets.forEach(id => {
+    const det = document.getElementById(id);
+    if (!det) return;
+    det.style.display = '';
+    const ctrlRow = document.querySelector(`tr[data-detail="${id}"]`);
+    if (ctrlRow) {
+      ctrlRow.classList.add('expanded');
+      const chevron = ctrlRow.querySelector('.tog-chevron');
+      if (chevron) chevron.innerHTML = '&#9660;';
+    }
+  });
+}
+
+function setAIMode(checked) {
+  aiMode = checked;
+  const state = getAccordionState();
+  if (currentMode === 'ksi') renderKSIs();
+  else renderControls();
+  restoreAccordionState(state);
 }
 
 // ─── KSI view ────────────────────────────────────────────────────────────────
@@ -743,14 +825,19 @@ function buildKSIItem(ksi) {
   const rows = mappings.map(m => {
     const ctrl = DB.controlMap[m.controlId];
     if (!ctrl) return '';
-    const cid = escAttr(ctrl.controlId);
+    const cid      = escAttr(ctrl.controlId);
+    const autoVal  = aiMode ? m.ai_automatable : m.automatable;
+    const autoTip  = aiMode
+      ? [m.prerequisites, '\n\n## Agentic AI Automation\n', m.ai_description].filter(Boolean).join('')
+      : m.prerequisites;
+    const scoreVal = aiMode ? m.ai_score : m.score;
     return `<div class="map-row">
       <span class="cell-id nav-link" data-tip="${escAttr(ctrl.statement)}" onclick="goToControl('${cid}')">${esc(ctrl.displayId)}</span>
       <span class="cell-ctrl-title nav-link map-title" data-tip="${escAttr(ctrl.statement)}" onclick="goToControl('${cid}')">${esc(ctrl.title)}</span>
       <span class="map-ratings">
         <span class="map-col"><span class="map-lbl">Strength</span>${strengthBadge(m.strength, m.rationale)}</span>
-        <span class="map-col"><span class="map-lbl">Automatable</span>${automatableBadge(m.automatable, m.prerequisites)}</span>
-        <span class="map-col"><span class="map-lbl">Score</span>${scoreBadge(m.score)}</span>
+        <span class="map-col"><span class="map-lbl">Automatable</span>${automatableBadge(autoVal, autoTip)}</span>
+        <span class="map-col"><span class="map-lbl">Score</span>${scoreBadge(scoreVal)}</span>
       </span>
     </div>`;
   }).join('');
@@ -764,8 +851,8 @@ function buildKSIItem(ksi) {
   return `<div class="ksi-item collapsed" id="ksi-${escAttr(ksi.ksiId)}">
     <div class="ksi-header" onclick="toggleGroup(this)">
       <span class="chevron">&#9660;</span>
-      <span class="ksi-id tip-only" data-tip="${escAttr(ksi.ksiStatement)}" onclick="event.stopPropagation()">${esc(ksi.ksiId)}</span>
-      <span class="ksi-title-text tip-only" data-tip="${escAttr(ksi.ksiStatement)}" onclick="event.stopPropagation()">${esc(ksi.ksiTitle)}</span>
+      <span class="ksi-id tip-only" data-tip="${escAttr(ksi.ksiStatement)}" data-tip-label="KSI Statement" onclick="event.stopPropagation()">${esc(ksi.ksiId)}</span>
+      <span class="ksi-title-text tip-only" data-tip="${escAttr(ksi.ksiStatement)}" data-tip-label="KSI Statement" onclick="event.stopPropagation()">${esc(ksi.ksiTitle)}</span>
       <span class="group-count">${countText}</span>
     </div>
     <div class="ksi-body">${body}</div>
@@ -841,19 +928,25 @@ function buildControlItem(ctrl) {
 
   const coreTag = ctrl.core ? '<span class="badge b-core">C</span>' : '';
 
-  const scoreCell = `<td class="ctrl-col-score">${scoreBadge(ctrl.coverage ?? 0, ctrl.rationale ?? '')}</td>`;
+  const coverageVal = aiMode ? (ctrl.ai_coverage ?? 0) : (ctrl.coverage ?? 0);
+  const scoreCell = `<td class="ctrl-col-score">${scoreBadge(coverageVal, ctrl.rationale ?? '')}</td>`;
 
   const mappingRows = mappings.map(m => {
     const ksi = DB.ksiMap[m.ksiId];
     if (!ksi) return '';
-    const kid = escAttr(ksi.ksiId);
+    const kid      = escAttr(ksi.ksiId);
+    const autoVal  = aiMode ? m.ai_automatable : m.automatable;
+    const autoTip  = aiMode
+      ? [m.prerequisites, '\n\n## Agentic AI Automation\n', m.ai_description].filter(Boolean).join('')
+      : m.prerequisites;
+    const scoreVal = aiMode ? m.ai_score : m.score;
     return `<div class="map-row">
       <span class="cell-id nav-link" data-tip="${escAttr(ksi.ksiStatement)}" onclick="goToKSI('${kid}')">${esc(ksi.ksiId)}</span>
       <span class="cell-ksi-title nav-link map-title" data-tip="${escAttr(ksi.ksiStatement)}" onclick="goToKSI('${kid}')">${esc(ksi.ksiTitle)}</span>
       <span class="map-ratings">
         <span class="map-col"><span class="map-lbl">Strength</span>${strengthBadge(m.strength, m.rationale)}</span>
-        <span class="map-col"><span class="map-lbl">Automatable</span>${automatableBadge(m.automatable, m.prerequisites)}</span>
-        <span class="map-col"><span class="map-lbl">Score</span>${scoreBadge(m.score)}</span>
+        <span class="map-col"><span class="map-lbl">Automatable</span>${automatableBadge(autoVal, autoTip)}</span>
+        <span class="map-col"><span class="map-lbl">Score</span>${scoreBadge(scoreVal)}</span>
       </span>
     </div>`;
   }).join('');
@@ -869,8 +962,8 @@ function buildControlItem(ctrl) {
 
   return `<tr class="ctrl-row" id="ctrl-${escAttr(ctrl.controlId)}" data-detail="${mappings.length ? toggleId : ''}">
     ${toggleCell}
-    <td class="ctrl-col-id"><span class="control-id tip-only" data-tip="${escAttr(ctrl.statement)}">${esc(ctrl.displayId)}</span></td>
-    <td class="ctrl-col-title"><span class="control-title-text tip-only" data-tip="${escAttr(ctrl.statement)}">${esc(ctrl.title)}</span>${coreTag}</td>
+    <td class="ctrl-col-id"><span class="control-id tip-only" data-tip="${escAttr(ctrl.statement)}" data-tip-label="Control Statement">${esc(ctrl.displayId)}</span></td>
+    <td class="ctrl-col-title"><span class="control-title-text tip-only" data-tip="${escAttr(ctrl.statement)}" data-tip-label="Control Statement">${esc(ctrl.title)}</span>${coreTag}</td>
     ${scoreCell}
   </tr>${detailRow}`;
 }
@@ -988,7 +1081,7 @@ function toggleGroup(header) {
 // ─── Family average score ────────────────────────────────────────────────────
 
 function familyAvgScoreBadge(controls) {
-  const scores = controls.map(c => c.coverage ?? 0);
+  const scores = controls.map(c => (aiMode ? c.ai_coverage : c.coverage) ?? 0);
   const avg = scores.reduce((a, b) => a + b, 0) / scores.length;
 
   let label, cls;
@@ -1000,7 +1093,7 @@ function familyAvgScoreBadge(controls) {
   else if (avg >= 0.4)  { label = 'Poor';           cls = 'b-poor';      }
   else                   { label = 'No KSI Coverage'; cls = 'b-none';    }
 
-  return `<span class="badge ${cls}" title="Avg score: ${avg.toFixed(2)}">${label}</span>`;
+  return `<span class="badge ${cls} tip" data-tip="Family average score: ${avg.toFixed(2)}" data-tip-label="Family Average Score">${label}</span>`;
 }
 
 // ─── Badges ───────────────────────────────────────────────────────────────────
@@ -1008,14 +1101,15 @@ function familyAvgScoreBadge(controls) {
 function strengthBadge(val, rationale) {
   const map = { 3: ['Strong', 'b-strong'], 2: ['Fair', 'b-fair'], 1: ['Weak', 'b-weak'], 0: ['None', 'b-none'] };
   const [label, cls] = map[val] ?? ['?', 'b-dim'];
-  const tip = rationale ? ` data-tip="${escAttr(rationale)}"` : '';
+  const tip = rationale ? ` data-tip="${escAttr(rationale)}" data-tip-label="Strength Rationale"` : '';
   return `<span class="badge ${cls}${tip ? ' tip' : ''}"${tip}>${label}</span>`;
 }
 
 function automatableBadge(val, prerequisites) {
   const map = { 3: ['Simple', 'b-simple'], 2: ['Fair', 'b-fair'], 1: ['Complex', 'b-complex'], 0: ['None', 'b-none'] };
   const [label, cls] = map[val] ?? ['?', 'b-dim'];
-  const tip = prerequisites ? ` data-tip="${escAttr(prerequisites)}"` : '';
+  const tipLabel = aiMode ? 'Agentic AI Automation' : 'Automation Prerequisites';
+  const tip = prerequisites ? ` data-tip="${escAttr(prerequisites)}" data-tip-label="${tipLabel}"` : '';
   return `<span class="badge ${cls}${tip ? ' tip' : ''}"${tip}>${label}</span>`;
 }
 
@@ -1026,7 +1120,7 @@ function scoreBadge(val, tip = '') {
   else if (val === 4)      { label = 'Fair';      cls = 'b-fair'; }
   else if (val > 0)        { label = 'Poor';      cls = 'b-poor'; }
   else                     { label = 'None';      cls = 'b-none'; }
-  const tipAttr = tip ? ` data-tip="${escAttr(tip)}"` : '';
+  const tipAttr = tip ? ` data-tip="${escAttr(tip)}" data-tip-label="Coverage Rationale"` : '';
   return `<span class="badge ${cls}${tip ? ' tip' : ''}"${tipAttr}>${label}</span>`;
 }
 
@@ -1040,7 +1134,7 @@ function wireTooltips(root) {
     el.addEventListener('mousemove',  onTipMove);
     el.addEventListener('mouseleave', onTipLeave);
   });
-  root.querySelectorAll('.tip-only[data-tip]').forEach(el => {
+  root.querySelectorAll('[data-tip]:not(.nav-link):not(.hover-tip)').forEach(el => {
     el.addEventListener('click', onTipClick);
   });
 }
@@ -1048,12 +1142,12 @@ function wireTooltips(root) {
 function onTipEnter(e) {
   const text = e.currentTarget.dataset.tip;
   if (!text) return;
-  const isTipOnly = e.currentTarget.classList.contains('tip-only');
+  const isClickable = !e.currentTarget.classList.contains('nav-link');
   let display = text;
   if (text.length > TOOLTIP_LIMIT) {
     const cut = text.lastIndexOf(' ', TOOLTIP_LIMIT);
     display = text.slice(0, cut > 0 ? cut : TOOLTIP_LIMIT) + '…';
-    if (isTipOnly) display += '\n\n[Click for full statement]';
+    if (isClickable) display += '\n\n[Click for more]';
   }
   tipEl.textContent   = display;
   tipEl.style.display = 'block';
@@ -1084,8 +1178,7 @@ function onTipClick(e) {
   const el   = e.currentTarget;
   const text = el.dataset.tip;
   if (!text) return;
-  const isKsi = el.classList.contains('ksi-id') || el.classList.contains('ksi-title-text');
-  stmtModalLabel.textContent = isKsi ? 'KSI Statement' : 'Control Statement';
+  stmtModalLabel.textContent = el.dataset.tipLabel || 'Details';
   stmtModalBody.textContent  = text;
   tipEl.style.display        = 'none';
   stmtModal.showModal();
